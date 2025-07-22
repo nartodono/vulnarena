@@ -34,5 +34,6 @@ This folder contains all Kubernetes deployment files used throughout the develop
 ## Notes
 
 - All files are organized to support development, testing, and automation tasks within the Vulnarena project.
-- Please update this documentation if new deployment files are added or changes are made.
+- All of these deployment files have been tested and work in my environment. If you would like to use them, please review and adjust the configuration as needed to fit your own infrastructure setup.
+
 
