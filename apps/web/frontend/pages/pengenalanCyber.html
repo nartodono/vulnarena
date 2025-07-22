@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pengenalan Web Security | Vulnarena</title>
+  <link rel="stylesheet" href="/style/output.css">
+  <link rel="icon" href="/style/resource/img/favicon_vulnarena.ico" type="image/x-icon">
+  <script type="module" src="./../js/global.js?v=107" defer></script>
+  <style>
+    body {
+      background: radial-gradient(ellipse at top, #0f172a 0%, #000 100%);
+    }
+
+    .grid-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.8s ease-in-out both;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-10%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-slide-down {
+      animation: slideDown 0.3s ease-out forwards;
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans antialiased relative overflow-x-hidden min-h-screen">
+  <div class="absolute w-full h-full top-0 left-0 grid-bg pointer-events-none z-0"></div>
+  <header class="bg-gray-900 shadow-md fixed top-0 left-0 w-full z-50">
+    <div class="w-full h-16 flex items-center justify-between px-8">
+      <a href="/" class="text-xl font-bold text-white">Vulnarena</a>
+      <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <nav class="hidden md:flex h-full">
+        <ul class="flex items-stretch h-full text-white font-medium">
+          <li class="h-full"><a href="/" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Beranda</a></li>
+          <li class="h-full"><a href="/learn" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Belajar</a></li>
+          <li class="h-full"><a href="/labs" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Lab</a></li>
+          <li class="h-full"><a href="/pvp" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Bermain</a></li>
+        </ul>
+      </nav>
+      <div id="auth-desktop" class="hidden md:flex gap-3"></div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-8 py-4 animate-slide-down">
+      <ul class="flex flex-col gap-3 text-white font-medium">
+        <li><a href="/" class="block hover:text-indigo-300">Beranda</a></li>
+        <li><a href="/learn" class="block hover:text-indigo-300">Belajar</a></li>
+        <li><a href="/labs" class="block hover:text-indigo-300">Lab</a></li>
+        <li><a href="/pvp" class="block hover:text-indigo-300">Bermain</a></li>
+      </ul>
+      <div id="auth-mobile" class="mt-4 flex flex-col gap-3"></div>
+    </div>
+  </header>
+
+ <main class="pt-32 pb-24 relative z-10 px-6 lg:px-16 xl:px-32 fade-in">
+  <div class="max-w-4xl mx-auto text-gray-300">
+      <section class="lg:col-span-6 space-y-14 text-gray-300 leading-relaxed text-[1.05rem]">
+        <div class="text-center">
+          <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-500 pb-2">
+            Pengenalan Web Security
+          </h1>
+          <p class="mt-4 text-lg max-w-2xl mx-auto">
+            Pahami cara kerja komunikasi web, kelemahannya, dan bagaimana menjaga sistem tetap aman dari berbagai serangan umum.
+          </p>
+        </div>
+        <div id="intro">
+  <h2 class="text-xl text-cyan-400 font-semibold mb-2">> Apa Itu Web Security?</h2>
+  <p>Web Security adalah praktik untuk melindungi aplikasi web dari ancaman seperti pencurian data, akses ilegal, dan eksploitasi celah. Tujuannya adalah menjaga kerahasiaan, integritas, dan ketersediaan layanan web.</p>
+</div>
+
+<div id="http">
+  <h2 class="text-xl text-cyan-400 font-semibold mt-10 mb-2">> HTTP vs HTTPS</h2>
+  <p><strong>HTTP</strong> tidak dienkripsi, membuat data rentan disadap. <strong>HTTPS</strong> menggunakan SSL/TLS untuk mengenkripsi komunikasi antara browser dan server.</p>
+  <ul class="list-disc pl-6 mt-2 space-y-1">
+    <li>Selalu gunakan HTTPS di semua halaman, terutama login dan data sensitif.</li>
+    <li>Gunakan sertifikat dari CA terpercaya (seperti Let’s Encrypt).</li>
+  </ul>
+</div>
+
+<div id="cookies">
+  <h2 class="text-xl text-cyan-400 font-semibold mt-10 mb-2">> Cookies, Session & Local Storage</h2>
+  <p><strong>Cookies</strong> disimpan di browser dan dikirim otomatis ke server. <strong>Session</strong> disimpan di server dan hanya ID-nya di browser. <strong>LocalStorage</strong> disimpan di browser dan tidak otomatis terkirim ke server.</p>
+  <p class="mt-2 text-yellow-300">⚠️ Jangan pernah simpan data sensitif di LocalStorage karena mudah dieksploitasi melalui XSS.</p>
+</div>
+
+<div id="auth">
+  <h2 class="text-xl text-cyan-400 font-semibold mt-10 mb-2">> Authentication vs Authorization</h2>
+  <p><strong>Authentication</strong> adalah proses memverifikasi identitas user. <br><strong>Authorization</strong> adalah proses menentukan hak akses setelah user terverifikasi.</p>
+  <p class="mt-2">Pastikan proteksi URL dilakukan di sisi server, bukan hanya UI.</p>
+</div>
+
+<div id="threats">
+  <h2 class="text-xl text-cyan-400 font-semibold mt-10 mb-2">> Ancaman Umum</h2>
+  <ul class="list-disc pl-6 space-y-2">
+    <li><strong>XSS:</strong> Serangan dengan menyisipkan JavaScript berbahaya ke halaman web.</li>
+    <li><strong>CSRF:</strong> Menyalahgunakan sesi user untuk mengirim aksi palsu ke server.</li>
+    <li><strong>SQL Injection:</strong> Manipulasi query SQL melalui input yang tidak divalidasi.</li>
+    <li><strong>Broken Access Control:</strong> Pengguna biasa bisa mengakses resource terbatas.</li>
+  </ul>
+</div>
+
+<div id="headers">
+  <h2 class="text-xl text-cyan-400 font-semibold mt-10 mb-2">> Security Headers Penting</h2>
+  <ul class="list-disc pl-6 space-y-1">
+    <li><code class="text-cyan-300">Content-Security-Policy</code>: Mencegah XSS dan penyisipan script eksternal.</li>
+    <li><code class="text-cyan-300">Strict-Transport-Security</code>: Paksa penggunaan HTTPS.</li>
+    <li><code class="text-cyan-300">X-Frame-Options</code>: Cegah clickjacking.</li>
+    <li><code class="text-cyan-300">X-Content-Type-Options</code>: Blok MIME sniffing.</li>
+    <li><code class="text-cyan-300">Referrer-Policy</code>: Atur informasi yang dibagikan ke referer.</li>
+  </ul>
+</div>
+
+<div id="tools">
+  <h2 class="text-xl text-cyan-400 font-semibold mt-10 mb-2">> Tools Penting untuk Testing</h2>
+  <ul class="list-disc pl-6 space-y-1">
+    <li><strong>Burp Suite:</strong> Intercept request & eksplorasi celah.</li>
+    <li><strong>OWASP ZAP:</strong> Scanner gratis untuk web vuln.</li>
+    <li><strong>Postman:</strong> Uji API dan response header.</li>
+    <li><strong>Nikto, sqlmap, nuclei:</strong> Untuk scanning otomatisasi.</li>
+  </ul>
+</div>
+
+<div id="case">
+  <h2 class="text-xl text-cyan-400 font-semibold mt-10 mb-2">> Studi Kasus Singkat</h2>
+  <p><strong>XSS di Komentar:</strong> Seorang attacker menyisipkan kode <code class="bg-gray-800 px-1 text-cyan-300 rounded text-sm">&lt;script&gt;...&lt;/script&gt;</code> ke kolom komentar. Saat user lain membuka, script berjalan otomatis dan mencuri cookie.</p>
+  <p class="mt-2">Solusi: escape output, validasi input, dan gunakan CSP.</p>
+</div>
+
+
+
+<!-- Tambahan Konten: Penjelasan Mendalam dan Studi Praktis -->
+<div id="owasp">
+  <h2 class="text-xl text-cyan-400 font-semibold mt-10 mb-2">> Mengenal OWASP Top 10</h2>
+  <p>OWASP (Open Web Application Security Project) merilis daftar 10 besar kelemahan aplikasi web yang paling umum. Ini adalah standar industri dalam menilai keamanan aplikasi.</p>
+  <ul class="list-decimal pl-6 space-y-1 mt-2">
+    <li>Broken Access Control</li>
+    <li>Cryptographic Failures</li>
+    <li>Injection (termasuk SQLi, NoSQLi)</li>
+    <li>Insecure Design</li>
+    <li>Security Misconfiguration</li>
+    <li>Vulnerable and Outdated Components</li>
+    <li>Identification and Authentication Failures</li>
+    <li>Software and Data Integrity Failures</li>
+    <li>Security Logging and Monitoring Failures</li>
+    <li>Server-Side Request Forgery (SSRF)</li>
+  </ul>
+</div>
+
+<div id="mitigasi">
+  <h2 class="text-xl text-cyan-400 font-semibold mt-10 mb-2">> Teknik Mitigasi Tambahan</h2>
+  <ul class="list-disc pl-6 space-y-1">
+    <li><strong>WAF (Web Application Firewall):</strong> Saring traffic masuk untuk mencegah serangan otomatis.</li>
+    <li><strong>Rate Limiting:</strong> Batasi jumlah request untuk mencegah brute force.</li>
+    <li><strong>CAPTCHA:</strong> Lindungi form login dan registrasi dari bot.</li>
+    <li><strong>Audit Log:</strong> Catat aktivitas penting seperti login, akses admin, dll.</li>
+    <li><strong>Security Headers:</strong> Tambahkan header seperti `CSP`, `HSTS`, dan `X-Frame-Options`.</li>
+  </ul>
+</div>
+
+<div id="contoh">
+  <h2 class="text-xl text-cyan-400 font-semibold mt-10 mb-2">> Contoh Kasus: SQL Injection</h2>
+  <p><strong>Kode Kerentanan:</strong></p>
+  <pre class="bg-gray-900 text-sm text-green-400 p-4 rounded overflow-auto"><code>"SELECT * FROM users WHERE username = '" + username + "' AND password = '" + password + "'";</code></pre>
+  <p><strong>Payload:</strong> <code>' OR '1'='1</code></p>
+  <p>Hasilnya: Login berhasil tanpa kredensial sah.</p>
+  <p class="mt-2"><strong>Mitigasi:</strong> Gunakan parameterized queries atau prepared statements.</p>
+</div>
+
+<div id="rekomendasi">
+  <h2 class="text-xl text-cyan-400 font-semibold mt-10 mb-2">> Rekomendasi Implementasi di Dunia Nyata</h2>
+  <ul class="list-disc pl-6 space-y-1">
+    <li>Gunakan framework yang memiliki proteksi built-in seperti Laravel atau Django.</li>
+    <li>Jangan deploy database langsung ke internet.</li>
+    <li>Backup secara berkala dan simpan di lokasi terpisah.</li>
+    <li>Scan otomatis sebelum dan sesudah deploy (CI/CD).</li>
+    <li>Berikan training keamanan pada developer dan QA.</li>
+  </ul>
+</div>
+
+<div class="text-center mt-16">
+          <a href="/labs" class="inline-block bg-gradient-to-r from-indigo-600 to-cyan-600 text-white px-8 py-3 rounded-full shadow-lg hover:scale-105 transition-transform">
+            🚀 Lanjut ke Simulasi Lab
+          </a>
+          <p class="text-sm mt-2 text-gray-400">Atau <a href="#" class="underline hover:text-white">ikuti mini quiz</a> untuk uji pemahamanmu.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="bg-gray-950 border-t border-gray-800 py-6 mt-auto">
+    <div class="w-full px-8 md:px-16 lg:px-24 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-500 text-sm">© 2025 Vulnarena. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

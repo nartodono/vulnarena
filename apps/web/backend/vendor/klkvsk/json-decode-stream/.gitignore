@@ -1,0 +1,7 @@
+*.iml
+/composer.lock
+/.idea
+/vendor
+/tests/coverage/
+.phpunit.result.cache
+.php_cs.cache

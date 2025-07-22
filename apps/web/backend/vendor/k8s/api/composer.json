@@ -1,0 +1,38 @@
+{
+    "name": "k8s/api",
+    "description": "Kubernetes API models and services generated from the OpenAPI spec.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chad Sikorra",
+            "email": "Chad.Sikorra@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "k8s/core": "^1.0"
+    },
+    "require-dev": {
+        "k8s/api-generator": "~0.2",
+        "friendsofphp/php-cs-fixer": "^2.0",
+        "phpstan/phpstan": "^0.12"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "K8s\\Api\\": "src/K8s/Api"
+        }
+    },
+    "scripts": {
+        "cs-fix": [
+            "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
+            "php-cs-fixer fix src/ --rules=@PSR2"
+        ],
+        "analyse": [
+            "phpstan analyse"
+        ]
+    }
+}

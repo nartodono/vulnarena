@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Red Team Operations | Vulnarena</title>
+  <link rel="stylesheet" href="/style/output.css">
+  <link rel="icon" href="/style/resource/img/favicon_vulnarena.ico" type="image/x-icon">
+  <script type="module" src="./../js/global.js?v=107" defer></script>
+  <style>
+    body {
+      background: radial-gradient(ellipse at top, #0f172a 0%, #000 100%);
+    }
+    .grid-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
+    }
+    .fade-in {
+      animation: fadeInUp 0.8s ease-in-out both;
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+  <style>
+    @keyframes slideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-10%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-slide-down {
+      animation: slideDown 0.3s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-gray-950 text-white font-sans antialiased relative overflow-x-hidden">
+
+  <div class="fixed w-full h-full top-0 left-0 grid-bg pointer-events-none z-0"></div>
+
+  <!-- Navbar -->
+  <header class="bg-gray-900 shadow-md fixed top-0 left-0 w-full z-50">
+    <div class="w-full h-16 flex items-center justify-between px-8">
+      <a href="/" class="text-xl font-bold text-white">Vulnarena</a>
+      <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <nav class="hidden md:flex h-full">
+        <ul class="flex items-stretch h-full text-white font-medium">
+          <li class="h-full"><a href="/" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Beranda</a></li>
+          <li class="h-full"><a href="/learn" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Belajar</a></li>
+          <li class="h-full"><a href="/labs" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Lab</a></li>
+          <li class="h-full"><a href="/pvp" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Bermain</a></li>
+        </ul>
+      </nav>
+      <div id="auth-desktop" class="hidden md:flex gap-3"></div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-8 py-4 animate-slide-down">
+      <ul class="flex flex-col gap-3 text-white font-medium">
+        <li><a href="/" class="block hover:text-indigo-300">Beranda</a></li>
+        <li><a href="/learn" class="block hover:text-indigo-300">Belajar</a></li>
+        <li><a href="/labs" class="block hover:text-indigo-300">Lab</a></li>
+        <li><a href="/pvp" class="block hover:text-indigo-300">Bermain</a></li>
+      </ul>
+      <div id="auth-mobile" class="mt-4 flex flex-col gap-3"></div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-32 pb-24 relative z-10 px-6 lg:px-16 xl:px-32 fade-in">
+    <div class="max-w-4xl mx-auto text-gray-300">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500 mb-6">🔴 Red Team Operations</h1>
+      <p class="text-lg mb-8">Red Team berfokus pada serangan siber simulasi untuk mengidentifikasi kelemahan dalam sistem pertahanan. Mereka menggunakan teknik, alat, dan strategi layaknya penyerang nyata, dengan tujuan memperkuat pertahanan organisasi melalui temuan yang didokumentasikan.</p>
+
+      <h2 class="text-xl text-cyan-500 font-semibold mb-4">Apa itu Red Team?</h2>
+      <p class="mb-6">Red Team merupakan tim ofensif dalam dunia keamanan siber yang bertugas menguji kekuatan sistem, proses, dan manusia melalui simulasi serangan terencana. Mereka mensimulasikan ancaman eksternal dan internal demi mengukur seberapa baik sistem pertahanan dapat mendeteksi dan merespons serangan.</p>
+
+      <h2 class="text-xl text-cyan-500 font-semibold mt-10 mb-4">Tahapan Operasi Red Team</h2>
+      <ul class="list-disc pl-6 space-y-1 text-gray-300">
+        <li><strong>Reconnaissance:</strong> Mengumpulkan informasi publik tentang target.</li>
+        <li><strong>Weaponization & Delivery:</strong> Membangun dan mengirim payload (phishing, exploit, dll).</li>
+        <li><strong>Exploitation & Access:</strong> Mengeksploitasi kelemahan untuk mendapatkan akses.</li>
+        <li><strong>Privilege Escalation:</strong> Meningkatkan hak akses dalam sistem.</li>
+        <li><strong>Lateral Movement:</strong> Bergerak ke sistem lain dalam jaringan.</li>
+        <li><strong>Persistence & Exfiltration:</strong> Menjaga akses dan mengambil data sensitif.</li>
+      </ul>
+
+      <h2 class="text-xl text-cyan-500 font-semibold mt-10 mb-4">Tools yang Digunakan</h2>
+      <table class="table-auto border border-gray-700 w-full text-sm">
+        <thead class="bg-gray-800 text-white">
+          <tr>
+            <th class="border px-4 py-2">Kategori</th>
+            <th class="border px-4 py-2">Tools</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-300">
+          <tr>
+            <td class="border px-4 py-2">Eksploitasi</td>
+            <td class="border px-4 py-2">Metasploit, PowerSploit</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">Command & Control</td>
+            <td class="border px-4 py-2">Cobalt Strike, Sliver, Mythic</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">Lateral Movement</td>
+            <td class="border px-4 py-2">PsExec, WMI, RDP</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">OSINT</td>
+            <td class="border px-4 py-2">theHarvester, Recon-ng, Maltego</td>
+          </tr>
+          <tr>
+            <td class="border px-4 py-2">Evasion</td>
+            <td class="border px-4 py-2">Shellter, Veil, Donut</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="text-xl text-cyan-500 font-semibold mt-10 mb-4">Studi Kasus Red Team</h2>
+      <p class="mb-6">Sebuah organisasi besar mengalami simulasi spear phishing terhadap karyawannya. Red Team berhasil memperoleh kredensial dan menyusup ke sistem payroll. Dari sini mereka mengakses database sensitif, yang akhirnya digunakan untuk merekomendasikan perbaikan segmentasi jaringan dan implementasi autentikasi multifaktor (MFA).</p>
+
+      <h2 class="text-xl text-cyan-500 font-semibold mt-10 mb-4">Etika dan Tanggung Jawab</h2>
+      <p>Red Team wajib mengikuti kode etik profesional. Seluruh kegiatan harus berdasarkan persetujuan (rules of engagement), tidak merusak sistem, dan dilaporkan secara transparan. Tujuannya adalah membangun sistem pertahanan yang lebih kuat tanpa menimbulkan kerugian nyata.</p>
+
+      <div class="text-center mt-12">
+        <a href="/labs" class="inline-block bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-8 py-3 rounded-full shadow-lg hover:scale-105 transition-transform">
+          🚀 Lanjut ke Simulasi Lab
+        </a>
+        <p class="text-sm mt-2 text-gray-400">Atau <a href="#" class="underline hover:text-white">ikuti mini quiz</a> untuk tes pemahamanmu.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-950 border-t border-gray-800 py-6 mt-auto">
+    <div class="w-full px-8 md:px-16 lg:px-24 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-500 text-sm">© 2025 Vulnarena. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

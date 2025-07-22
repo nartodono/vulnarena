@@ -1,0 +1,71 @@
+    .container {
+        max-width: 600px;
+        margin: 2rem auto;
+        background-color: #1e293b;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+    }
+
+    .content .product {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        background-color: #334155;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+    }
+
+    .content .product p {
+        margin: 0;
+    }
+
+    .content input[type="number"] {
+        width: 50px;
+        text-align: center;
+        border: none;
+        border-radius: 0.25rem;
+    }
+
+    .content button[type="button"] {
+        background-color: #3b82f6;
+        color: #f8fafc;
+        border: none;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.25rem;
+        cursor: pointer;
+    }
+
+    .content button[type="button"]:hover {
+        background-color: #2563eb;
+    }
+
+    .content hr {
+        border: none;
+        border-top: 1px solid #475569;
+        margin: 1rem 0;
+    }
+
+    .content p strong {
+        color: #facc15;
+    }
+
+    .content button[type="submit"] {
+        background-color: #10b981;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        color: #f8fafc;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 1rem;
+    }
+
+    .content button[type="submit"]:hover {
+        background-color: #059669;
+    }
+
+    .product div button {
+    margin: 0 10px;
+    }

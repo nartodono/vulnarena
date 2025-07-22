@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Jika request bukan file yang ada secara fisik
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Jika request bukan direktori
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Maka arahkan ke route.php
+RewriteRule ^ index.php [QSA,L]

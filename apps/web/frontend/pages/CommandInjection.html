@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Command Injection | Vulnarena</title>
+<link rel="stylesheet" href="/style/output.css">
+<link rel="icon" href="/style/resource/img/favicon_vulnarena.ico" type="image/x-icon">
+<script type="module" src="./../js/global.js?v=107" defer></script>
+<style>
+  body {
+    background: radial-gradient(ellipse at top, #0f172a 0%, #000 100%);
+  }
+  .grid-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+  }
+  .fade-in {
+    animation: fadeInUp 0.8s ease-in-out both;
+  }
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+</style>
+<script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+  <style>
+    @keyframes slideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-10%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-slide-down {
+      animation: slideDown 0.3s ease-out forwards;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-950 text-white font-sans antialiased relative overflow-x-hidden">
+
+<div class="absolute w-full h-full top-0 left-0 grid-bg pointer-events-none z-0"></div>
+
+<!-- Navbar -->
+    <header class="bg-gray-900 shadow-md fixed top-0 left-0 w-full z-50">
+      <div class="w-full h-16 flex items-center justify-between px-8">
+        <a href="/" class="text-xl font-bold text-white">Vulnarena</a>
+        <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <nav class="hidden md:flex h-full">
+          <ul class="flex items-stretch h-full text-white font-medium">
+            <li class="h-full"><a href="/" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Beranda</a></li>
+            <li class="h-full"><a href="/learn" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Belajar</a></li>
+            <li class="h-full"><a href="/labs" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Lab</a></li>
+            <li class="h-full"><a href="/pvp" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Bermain</a></li>
+          </ul>
+        </nav>
+        <div id="auth-desktop" class="hidden md:flex gap-3"></div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-8 py-4 animate-slide-down">
+        <ul class="flex flex-col gap-3 text-white font-medium">
+          <li><a href="/" class="block hover:text-indigo-300">Beranda</a></li>
+          <li><a href="/learn" class="block hover:text-indigo-300">Belajar</a></li>
+          <li><a href="/labs" class="block hover:text-indigo-300">Lab</a></li>
+          <li><a href="/pvp" class="block hover:text-indigo-300">Bermain</a></li>
+        </ul>
+        <div id="auth-mobile" class="mt-4 flex flex-col gap-3"></div>
+      </div>
+    </header>
+
+<!-- Main Content -->
+<main class="pt-32 pb-24 relative z-10 px-6 lg:px-16 xl:px-32 fade-in">
+  <div class="max-w-4xl mx-auto text-gray-300">
+    <h1 class="flex items-center gap-3 text-4xl md:text-5xl font-extrabold leading-18 bg-gradient-to-r from-cyan-400 to-indigo-500 text-transparent bg-clip-text mb-6 pb-2">
+      <span class="text-5xl">🔧</span>
+      <span>Command Injection</span>
+    </h1>
+
+    <p class="text-lg mb-4">
+      Command Injection adalah kerentanan yang terjadi ketika aplikasi mengeksekusi perintah sistem dengan menggunakan input user tanpa validasi yang memadai. Hal ini memungkinkan penyerang untuk menyisipkan dan mengeksekusi perintah OS berbahaya seperti <code>ls</code>, <code>cat</code>, atau bahkan reverse shell.
+    </p>
+
+    <h2 class="text-xl text-cyan-400 font-semibold mb-2">💻 Contoh Kode PHP + Penjelasan</h2>
+    <div class="relative bg-gray-800 rounded-lg shadow-inner overflow-hidden mb-4">
+  <div class="bg-gray-900 px-4 py-2 flex items-center justify-between text-xs text-gray-400 font-mono">
+    <span>example.php</span>
+    <span class="text-green-400">PHP</span>
+  </div>
+  <button onclick="copyCode(this)" class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-xs text-white px-2 py-1 rounded transition">📋 Copy</button>
+      <pre class="text-sm text-cyan-300 px-4 py-3 overflow-x-auto font-mono">
+<span class="block"><span class="text-gray-500">1</span> &lt;?php</span>
+<span class="block"><span class="text-gray-500">2</span> $filename = basename($_GET['file']);</span>
+<span class="block"><span class="text-gray-500">3</span> system("ls " . escapeshellarg($filename));</span>
+<span class="block"><span class="text-gray-500">4</span> ?&gt;</span>
+</pre>
+    </div>
+    <p class="text-sm text-gray-400 mt-2">
+  🔎 <strong>Penjelasan:</strong><br>
+  - Penyerang juga bisa menggunakan command injection untuk mencuri data, membuka reverse shell, atau melakukan pivoting ke sistem internal.<br>
+  - Kerentanan ini umumnya ditemukan di fungsi PHP seperti <code>system()</code>, <code>exec()</code>, <code>popen()</code>, dan <code>shell_exec()</code>.<br>
+  - Command injection berbeda dengan code injection karena menargetkan perintah OS, bukan kode aplikasi.
+</p>
+
+    <h2 class="text-xl text-cyan-400 font-semibold mb-2 mt-6">💡 Jenis Command Injection</h2>
+<p class="text-sm text-gray-400 mb-3">Secara umum, terdapat dua jenis utama dari command injection:</p>
+<ul class="list-disc pl-6 space-y-1 text-sm text-gray-400">
+  <li><strong>Reflected Command Injection:</strong> Output dari perintah yang dieksekusi langsung terlihat di browser. Mudah dieksploitasi karena hasilnya langsung dapat diverifikasi.</li>
+  <li><strong>Blind Command Injection:</strong> Output tidak ditampilkan ke pengguna. Penyerang harus menggunakan metode tidak langsung untuk memverifikasi keberhasilan serangan, seperti <code>ping</code>, <code>sleep</code>, atau permintaan DNS keluar.</li>
+</ul>
+
+<h2 class="text-xl text-cyan-400 font-semibold mb-2 mt-6">🔁 Reflected Command Injection</h2>
+<p class="text-sm text-gray-400 mb-2"><strong>Penjelasan:</strong> Jenis injeksi ini akan langsung menampilkan hasil dari perintah yang disisipkan ke halaman web. Artinya, penyerang bisa langsung melihat apakah serangannya berhasil.</p>
+
+<div class="relative bg-gray-800 rounded-lg shadow-inner overflow-hidden mb-4">
+  <div class="bg-gray-900 px-4 py-2 text-xs text-gray-400 font-mono flex justify-between">
+    <span>reflected-payload.txt</span>
+    <span class="text-yellow-400">Payload</span>
+  </div>
+  <button onclick="copyCode(this)" class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-xs text-white px-2 py-1 rounded transition">📋 Copy</button>
+  <pre class="text-sm text-cyan-300 px-4 py-3 overflow-x-auto font-mono">
+<span class="block"><span class="text-gray-500">1</span> ?file=; whoami</span>
+<span class="block"><span class="text-gray-500">2</span> ?file=; ls -la</span>
+  </pre>
+</div>
+
+<p class="text-sm text-gray-400 mb-8">🔎 <strong>Penjelasan:</strong> Hasil dari perintah seperti <code>whoami</code> atau <code>ls</code> akan langsung muncul di halaman, sehingga penyerang bisa langsung tahu apakah injeksinya berhasil.</p>
+
+
+    <h2 class="text-xl text-cyan-400 font-semibold mb-2 mt-6">🕶️ Blind Command Injection</h2>
+<p class="text-sm text-gray-400 mb-2"><strong>Penjelasan:</strong> Output tidak langsung terlihat oleh pengguna. Penyerang mengandalkan efek samping seperti delay atau permintaan keluar untuk memastikan apakah perintah berhasil dijalankan.</p>
+
+<div class="relative bg-gray-800 rounded-lg shadow-inner overflow-hidden mb-4">
+  <div class="bg-gray-900 px-4 py-2 text-xs text-gray-400 font-mono flex justify-between">
+    <span>blind-payload.txt</span>
+    <span class="text-yellow-400">Payload</span>
+  </div>
+  <button onclick="copyCode(this)" class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-xs text-white px-2 py-1 rounded transition">📋 Copy</button>
+  <pre class="text-sm text-cyan-300 px-4 py-3 overflow-x-auto font-mono">
+<span class="block"><span class="text-gray-500">1</span> ?file=; sleep 5</span>
+<span class="block"><span class="text-gray-500">2</span> ?file=; ping -c 3 127.0.0.1</span>
+<span class="block"><span class="text-gray-500">3</span> ?file=; nslookup attacker.com</span>
+  </pre>
+</div>
+
+<p class="text-sm text-gray-400 mb-8">🔎 <strong>Penjelasan:</strong> Perintah seperti <code>sleep</code>, <code>ping</code>, atau <code>nslookup</code> membuat server berhenti sejenak atau menghubungi server lain. Cara ini digunakan untuk mengetahui apakah perintah berhasil dijalankan, meskipun hasilnya tidak ditampilkan langsung di layar.</p>
+
+<h2 class="text-xl text-cyan-400 font-semibold mb-2 mt-6">🧐 Cara pencegahan</h2>
+<div class="my-4"></div>
+
+    <div class="relative bg-gray-800 rounded-lg shadow-inner overflow-hidden mb-4">
+  <div class="bg-gray-900 px-4 py-2 flex items-center justify-between text-xs text-gray-400 font-mono">
+    <span>example.php</span>
+    <span class="text-green-400">PHP</span>
+  </div>
+  <button onclick="copyCode(this)" class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-xs text-white px-2 py-1 rounded transition">📋 Copy</button>
+      <pre class="text-sm text-cyan-300 px-4 py-3 overflow-x-auto font-mono">
+<span class="block"><span class="text-gray-500">1</span> &lt;?php</span>
+<span class="block"><span class="text-gray-500">2</span> $filename = basename($_GET['file']);</span>
+<span class="block"><span class="text-gray-500">3</span> system("ls " . escapeshellarg($filename));</span>
+<span class="block"><span class="text-gray-500">4</span> ?&gt;</span>
+</pre>
+    </div>
+    <p class="text-sm text-gray-400 mt-2">
+      🔎 <strong>Penjelasan:</strong><br>
+      - <code>basename()</code> mencegah path traversal<br>
+      - <code>escapeshellarg()</code> membungkus input dengan benar agar karakter berbahaya tidak bisa dieksekusi.
+    </p>
+
+    <h2 class="text-xl text-cyan-400 font-semibold mb-2 mt-6">🧰 Perintah Penting Setelah Injeksi</h2>
+<p class="text-sm text-gray-400 mb-2">Setelah berhasil menemukan celah command injection, perintah berikut dapat digunakan untuk mengenali lingkungan sistem:</p>
+<div class="overflow-auto mb-6">
+<table class="table-auto text-sm text-left border border-gray-700">
+  <thead class="bg-gray-800 text-cyan-300">
+    <tr>
+      <th class="px-4 py-2 border border-gray-700">Tujuan</th>
+      <th class="px-4 py-2 border border-gray-700">Linux</th>
+      <th class="px-4 py-2 border border-gray-700">Windows</th>
+    </tr>
+  </thead>
+  <tbody class="text-gray-300">
+    <tr>
+      <td class="px-4 py-2 border border-gray-700">Nama pengguna saat ini</td>
+      <td class="px-4 py-2 border border-gray-700"><code>whoami</code></td>
+      <td class="px-4 py-2 border border-gray-700"><code>whoami</code></td>
+    </tr>
+    <tr>
+      <td class="px-4 py-2 border border-gray-700">Sistem operasi</td>
+      <td class="px-4 py-2 border border-gray-700"><code>uname -a</code></td>
+      <td class="px-4 py-2 border border-gray-700"><code>ver</code></td>
+    </tr>
+    <tr>
+      <td class="px-4 py-2 border border-gray-700">Konfigurasi jaringan</td>
+      <td class="px-4 py-2 border border-gray-700"><code>ifconfig</code></td>
+      <td class="px-4 py-2 border border-gray-700"><code>ipconfig /all</code></td>
+    </tr>
+    <tr>
+      <td class="px-4 py-2 border border-gray-700">Koneksi jaringan</td>
+      <td class="px-4 py-2 border border-gray-700"><code>netstat -an</code></td>
+      <td class="px-4 py-2 border border-gray-700"><code>netstat -an</code></td>
+    </tr>
+    <tr>
+      <td class="px-4 py-2 border border-gray-700">Proses yang berjalan</td>
+      <td class="px-4 py-2 border border-gray-700"><code>ps -ef</code></td>
+      <td class="px-4 py-2 border border-gray-700"><code>tasklist</code></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 class="text-xl text-cyan-400 font-semibold mb-2 mt-6">📚 Sumber Referensi</h2>
+<ul class="list-disc pl-6 space-y-1 text-sm text-gray-300">
+  <li>🔗 <a href="https://portswigger.net/web-security/os-command-injection" target="_blank" class="underline hover:text-cyan-300">PortSwigger: OS Command Injection</a></li>
+  <li>🔗 <a href="https://owasp.org/www-community/attacks/Command_Injection" target="_blank" class="underline hover:text-cyan-300">OWASP: Command Injection</a></li>
+  <li>🔗 <a href="https://book.hacktricks.xyz/pentesting-web/command-injection" target="_blank" class="underline hover:text-cyan-300">HackTricks: Command Injection Cheatsheet</a></li>
+</ul>
+
+
+    <div class="text-center mt-12">
+      <a href="/labs" class="inline-block bg-gradient-to-r from-indigo-600 to-cyan-600 text-white px-8 py-3 rounded-full shadow-lg hover:scale-105 transition-transform">
+        🚀 Coba Lab Command Injection
+      </a>
+      <p class="text-sm mt-2 text-gray-400">Atau <a href="#" class="underline hover:text-white">uji pemahamanmu dengan mini quiz</a>.</p>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-950 border-t border-gray-800 py-6 mt-auto">
+  <div class="w-full px-8 md:px-16 lg:px-24 flex flex-col md:flex-row justify-between items-center">
+    <p class="text-gray-500 text-sm">© 2025 Vulnarena. All rights reserved.</p>
+    
+  </div>
+</footer>
+
+<script>
+function copyCode(button) {
+  const pre = button.parentElement.querySelector('pre');
+  const lines = Array.from(pre.querySelectorAll('span.block'));
+  const text = lines.map(line => {
+    return line.textContent.replace(/^\s*\d+\s/, '').trim();
+  }).join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    button.innerText = 'Copied!';
+    setTimeout(() => { button.innerText = '📋 Copy'; }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Battle Quiz PvP - Vulnarena</title>
+  <link rel="icon" href="/style/resource/img/favicon_vulnarena.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/style/output.css?v=1">
+  <script type="module" src="./../js/global.js?v=107" defer></script>
+  <script type="module" src="./../js/playPvp.js?a=47" defer></script>
+  <style>
+    body {
+      background: radial-gradient(ellipse at top, #0f172a 0%, #000 100%);
+    }
+    .grid-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
+    }
+    .fade-in {
+      animation: fadeInUp 0.8s ease-in-out both;
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideDown {
+      0% { opacity: 0; transform: translateY(-10%); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-down {
+      animation: slideDown 0.3s ease-out forwards;
+    }
+    /* glow result */
+    @keyframes glow-green {
+      0%, 100% { box-shadow: 0 0 24px 6px #22c55e88; }
+      50% { box-shadow: 0 0 48px 16px #22c55ecc; }
+    }
+    @keyframes glow-red {
+      0%, 100% { box-shadow: 0 0 24px 6px #ef444488; }
+      50% { box-shadow: 0 0 48px 16px #ef4444cc; }
+    }
+
+    .glow-green {
+      animation: glow-green 1.4s infinite;
+      transition: box-shadow 0.3s;
+    }
+    .glow-red {
+      animation: glow-red 1.4s infinite;
+      transition: box-shadow 0.3s;
+    }
+
+    @keyframes universal-glow {
+      0%, 100% {
+        box-shadow: 0 0 24px 6px #fff5, 0 0 0 0 transparent;
+      }
+      50% {
+        box-shadow: 0 0 48px 16px #fff9, 0 0 0 0 transparent;
+      }
+    }
+    .glow-universal {
+      animation: universal-glow 1.4s infinite;
+      transition: box-shadow 0.3s;
+    }
+    .z--1 { z-index: -1; }
+  </style>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+</head>
+
+<body class="min-h-screen flex flex-col bg-gray-950 text-white font-sans antialiased relative overflow-x-hidden">
+
+  <!-- Navbar (di atas) -->
+  <header class="bg-gray-900 shadow-md w-full z-50">
+    <div class="w-full h-16 flex items-center justify-between px-8">
+      <a href="/" class="text-xl font-bold text-white">Vulnarena</a>
+      <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <nav class="hidden md:flex h-full">
+        <ul class="flex items-stretch h-full text-white font-medium">
+          <li class="h-full"><a href="/" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Beranda</a></li>
+          <li class="h-full"><a href="/learn" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Belajar</a></li>
+          <li class="h-full"><a href="/labs" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Lab</a></li>
+          <li class="h-full"><a href="/pvp" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Bermain</a></li>
+        </ul>
+      </nav>
+      <div id="auth-desktop" class="hidden md:flex gap-3"></div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-8 py-4 animate-slide-down">
+      <ul class="flex flex-col gap-3 text-white font-medium">
+        <li><a href="/" class="block hover:text-indigo-300">Beranda</a></li>
+        <li><a href="/learn" class="block hover:text-indigo-300">Belajar</a></li>
+        <li><a href="/labs" class="block hover:text-indigo-300">Lab</a></li>
+        <li><a href="/pvp" class="block hover:text-indigo-300">Bermain</a></li>
+      </ul>
+      <div id="auth-mobile" class="mt-4 flex flex-col gap-3"></div>
+    </div>
+  </header>
+
+  <div class="absolute w-full h-full top-0 left-0 grid-bg pointer-events-none z--1"></div>
+
+  <!-- Main Content -->
+  <main class="flex-grow pt-22 pb-34 relative z-10 px-6 lg:px-16 xl:px-32 fade-in">
+    <div id="mainBar" class="hidden  max-w-4xl mx-auto bg-gray-800 rounded-lg p-6 shadow">
+      <div class="flex justify-between items-center mb-4">
+        <div>
+          <h2 class="text-cyan-400 font-semibold">🧑 Kamu: <span id="userName" class="text-white font-bold">Defender123</span></h2>
+          <p class="text-sm text-gray-400">ID: <span id="userId" class="font-bold text-white">1200</span></p>
+        </div>
+        <div>
+          <h2 class="text-pink-400 font-semibold">👾 Musuh: <span id="enemyName" class="text-white font-bold">H4x0rPwnz</span></h2>
+          <p class="text-sm text-gray-400 bold"> ID: <span id="enemyId" class="font-bold text-white">1100</span></p>
+        </div>
+      </div>
+
+      <div class="bg-gray-900 p-4 rounded mb-4">
+        <h3 class="text-lg font-semibold text-indigo-400 mb-2">⚡ Soal #<span id="questionNumber"></span></h3>
+        <p class="text-sm text-gray-300 mb-2"><span id="questionText"></span></p>
+
+      </div>
+
+      <div class="grid grid-cols-2 gap-4" id="optionContainer">
+        <button data-option="A" class="answer-option bg-indigo-600 py-3 px-4 rounded hover:scale-105 transition-transform">A. <span id="questionOptionA"></span></button>
+        <button data-option="B" class="answer-option bg-indigo-600 py-3 px-4 rounded hover:scale-105 transition-transform">B. <span id="questionOptionB"></span></button>
+        <button data-option="C" class="answer-option bg-indigo-600 py-3 px-4 rounded hover:scale-105 transition-transform">C. <span id="questionOptionC"></span></button>
+        <button data-option="D" class="answer-option bg-indigo-600 py-3 px-4 rounded hover:scale-105 transition-transform">D. <span id="questionOptionD"></span></button>
+      </div>
+
+      <!-- Tombol Kumpulkan -->
+      <div class="mt-4 text-center">
+        <p class="">Tipe soal: <span id="questionType"></span></p>
+        <button id="answerBtn" href="/detail-pvp" class="inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded shadow transition duration-300">
+          📨 Jawab
+        </button>
+      </div>
+
+    </div>
+
+    <div id="timeBar" class="hidden mt-12 bg-gray-800 p-4 rounded shadow text-center max-w-2xl mx-auto">
+      <h2 class="text-lg font-semibold text-cyan-400 mb-2">⚡ <span id="showTimer">00:00</span></h2>
+      <p class="text-sm text-gray-300">Match ID: <strong><span id="matchId"></span></strong></p>
+    </div>
+
+
+    <!-- Matchmaking -->
+    <div id="searchEnemyBar" class=" absolute inset-0 flex justify-center items-center">
+      <div class="bg-gray-800 p-6 rounded-lg shadow text-center w-full max-w-md">
+        <h2 id="searchEnemyText" class="text-lg font-semibold text-cyan-400 mb-2">Mencari Lawan...</h2>
+        <div id="foundEnemyText" class="hidden"> 
+          <h2 class="text-lg font-semibold text-cyan-400 mb-2">Lawan ditemukan!</h2>
+          <p>Lawan anda: <span id="foundEnemyNickname"></span></p>
+        </div>
+      </div>
+    </div>
+  
+  <!-- Finish -->
+   <div id="finishBar" class="hidden flex flex-col items-center justify-center min-h-screen px-6 text-center relative z-10 pt-32 fade-in">
+      <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 fade-in">
+        🏁 Hasil Pertandingan
+      </h1>
+      <p class="text-gray-300 mb-10 fade-in">Berikut ringkasan dari pertandingan yang telah kamu lakukan.</p>
+
+      <!-- waiting -->
+      <div id="waitingResultBar" class="hidden bg-gray-800 rounded-xl p-10 w-full max-w-4xl mx-auto shadow-lg max-h-4xl flex items-center fade-in">
+        <h2 class="text-center">Menunggu lawan...</h2>
+      </div>
+
+      <!-- Result -->
+      <div id="resultBar" class="hidden bg-gray-800 rounded-xl p-10 w-full max-w-4xl mx-auto shadow-lg max-h-4xl flex items-center fade-in">
+        <div  class="grid grid-cols-3 gap-6 w-full">
+
+          <!-- P1 -->
+          <div class="bg-gray-700 p-6 rounded-lg">
+            <h2 class="text-3xl font-bold mb-4"><span id="yourResult"></span></h2>
+            <div class="bg-gray-600 p-4 rounded text-sm space-y-1">
+              <p class="text-lg"><span id="yourName"></span></p>
+              <p>User ID: <span id="yourId"></span></p>
+              <p>Durasi: <span id="yourDuration"></span></p>
+              <p>Skor Akhir: <span id="yourScore"></span></p>
+            </div>
+          </div>
+
+          <!-- Info VS -->
+          <div class="text-center space-y-2 flex flex-col justify-center">
+            <div class="text-3xl font-bold text-white">VS</div>
+            <p class="text-sm text-gray-400">Waktu: <span id="startTime"></span></p>
+            <p class="text-sm text-gray-400">Match ID: <span id="resMatchId"></span></p>
+          </div>
+
+          <!-- P2 -->
+          <div class="bg-gray-700 p-6 rounded-lg">
+            <h2 class="text-3xl font-bold mb-4"><span id="opponentResult"></span></h2>
+            <div class="bg-gray-600 p-4 rounded text-sm space-y-1">
+              <p class="text-lg"><span id="opponentName"></span></p>
+              <p>User ID: <span id="opponentId"></span></p>
+              <p>Durasi: <span id="opponentDuration"></span> </p>
+              <p>Skor Akhir: <span id="opponentScore"></span></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="ResultNextBtnBar" class="hidden flex flex-col sm:flex-row gap-4 mt-8 fade-in">
+        <a id="resultNextBtn" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition-transform">
+          Berikutnya >>
+        </a>
+      </div>
+    </div>
+
+    <!-- conclusion -->
+    <div id="conclusionBar" class="hidden max-w-4xl mx-auto text-gray-300 text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-purple-400 to-cyan-500 bg-clip-text mb-6 fade-in">
+        🎉 Pertandingan Selesai!
+      </h1>
+      <p class="text-lg text-gray-300 mb-4 fade-in">Terima kasih telah berpartisipasi dalam PvP Battle di Vulnarena.</p>
+      <p class="text-sm text-gray-400 mb-10 fade-in">Skor dan statistikmu telah tercatat dalam sistem. Kamu bisa melihat hasil pertandingan di halaman profilmu.</p>
+
+      <div class="w-full max-w-md bg-gray-800 rounded-xl shadow-lg p-6 mb-10 fade-in mx-auto">
+
+        <h2 class="text-2xl font-bold text-indigo-400 mb-4">🎯 Performa Kamu</h2>
+        <div class="text-left text-gray-300 space-y-2">
+          <div><strong>Match ID: </strong><span id="conclusionMatchId"></span></div>
+          <div><strong>Tanggal: </strong><span id="conclusionTime"></span></div>
+          <div><strong>Hasil:</strong> <span id="conclusionStatus" class="">Menang</span></div>
+          <div><strong>MMR:</strong> <span id="conclusionMmr"> </span>(<span id="conclusionReward" class="">+30</span>)</div>
+          <div><strong>Jawaban Benar:</strong> <span id="conclusionScore"></span> </div>
+          <div><strong>Waktu digunakan:</strong> <span id="conclusionDuration"></span> detik</div>
+        </div>
+      </div>
+
+      <div class="flex justify-center mt-8">
+  <div class="flex flex-col sm:flex-row gap-4 fade-in">
+    <a href="/pvp" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium hover:scale-105 transition-transform text-center">
+      Bermain Lagi
+      </a>
+        <a href="/" class="inline-block border border-gray-600 text-gray-300 px-6 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-transform text-center">
+      ⬅️ Kembali ke Beranda
+       </a>
+    </div>
+  </div>
+
+
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="y-10 bg-gray-950 border-t border-gray-800 py-6">
+    <div class="w-full px-8 md:px-16 lg:px-24 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-500 text-sm">© 2025 Vulnarena. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Notification Modal -->
+    <div id="notifyModal" class="hidden fixed inset-0 backdrop-blur-sm bg-gray-900/60 justify-center items-center z-100">
+        <div class="bg-gray-800 p-10 rounded-xl shadow-xl max-w-md w-full text-center">
+            <h2 class="text-white text-2xl  font-semibold mb-2" id="notifyTitle"></h2>
+            <p class="text-white mb-4" id="notifyMessage"></p>
+            <button id="notifyCloseBtn" class="bg-indigo-600 text-white px-8 py-2 rounded-md hover:bg-indigo-700 active:scale-[0.92] transition transform duration-100">
+            OK
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

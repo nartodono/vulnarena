@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Metadata dasar dan judul halaman -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Pengguna | Vulnarena</title>
+
+  <!-- Link ke stylesheet utama -->
+  <link rel="stylesheet" href="/style/output.css?=114">
+
+  <!-- Favicon untuk tab browser -->
+  <link rel="icon" href="/style/resource/img/favicon_vulnarena.ico" type="image/x-icon">
+
+  <!-- Script utama untuk halaman profil -->
+  <script type="module" src="/js/account.js?a=7" defer></script>
+
+  <!-- Script global seperti navbar dan auth -->
+  <script type="module" src="./../js/global.js?v=109" defer></script>
+
+  <!-- Fungsi toggle menu mobile -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+
+  <!-- Animasi dan style tambahan -->
+  <style>
+    @keyframes slideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-10%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-slide-down {
+      animation: slideDown 0.3s ease-out forwards;
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.4s ease-out forwards;
+    }
+
+    /* Tombol tampilkan email */
+    #toggleEmail {
+      margin-left: 0.75rem; /* Tailwind: ml-3 */
+      font-size: 0.875rem;  /* text-sm */
+      cursor: pointer;
+    }
+  </style>
+
+  <!-- Background dan animasi grid -->
+  <style>
+    html, body {
+      height: 100%;
+    }
+    body {
+      background: radial-gradient(ellipse at top, #0f172a 0%, #000 100%);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Grid background dekoratif */
+    .grid-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
+    }
+
+    /* Animasi muncul dari bawah */
+    .fade-in {
+      animation: fadeInUp 0.8s ease-in-out both;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .z--1 { z-index: -1; }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans antialiased relative overflow-x-hidden flex flex-col min-h-screen">
+  <!-- Grid background -->
+  <div class="absolute w-full h-full top-0 left-0 grid-bg pointer-events-none z-0"></div>
+
+  <!-- Header navbar -->
+  <header class="bg-gray-900 shadow-md fixed top-0 left-0 w-full z-50">
+    <div class="w-full h-16 flex items-center justify-between px-8">
+      <!-- Logo -->
+      <a href="/" class="text-xl font-bold text-white">Vulnarena</a>
+
+      <!-- Tombol toggle menu mobile -->
+      <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Menu desktop -->
+      <nav class="hidden md:flex h-full">
+        <ul class="flex items-stretch h-full text-white font-medium">
+          <li class="h-full"><a href="/" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Beranda</a></li>
+          <li class="h-full"><a href="/learn" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Belajar</a></li>
+          <li class="h-full"><a href="/labs" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Lab</a></li>
+          <li class="h-full"><a href="/pvp" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Bermain</a></li>
+        </ul>
+      </nav>
+
+      <!-- Slot auth user (login/logout) -->
+      <div id="auth-desktop" class="hidden md:flex gap-3"></div>
+    </div>
+
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-8 py-4 animate-slide-down">
+      <ul class="flex flex-col gap-3 text-white font-medium">
+        <li><a href="/" class="block hover:text-indigo-300">Beranda</a></li>
+        <li><a href="/learn" class="block hover:text-indigo-300">Belajar</a></li>
+        <li><a href="/labs" class="block hover:text-indigo-300">Lab</a></li>
+        <li><a href="/pvp" class="block hover:text-indigo-300">Bermain</a></li>
+      </ul>
+      <div id="auth-mobile" class="mt-4 flex flex-col gap-3"></div>
+    </div>
+  </header>
+
+  <!-- Konten utama -->
+  <main class="pt-32 px-6 fade-in flex-grow ">
+    <div class="max-w-4xl mx-auto">
+      <!-- Avatar -->
+      <div class="flex justify-center mb-6">
+        <div class="w-24 h-24 rounded-full bg-indigo-600 flex items-center justify-center shadow-lg">
+          <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A6.978 6.978 0 0012 20a6.978 6.978 0 006.879-5.196M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Greeting -->
+      <div class="text-center mb-6">
+        <h2 id="greeting" class="text-xl font-semibold text-indigo-300"></h2>
+      </div>
+
+      <!-- Informasi profil -->
+      <div id="profile" class="bg-gray-800 rounded-lg shadow-md p-6 space-y-4">
+        <div><strong class="text-indigo-400">User ID:</strong> <span id="user_id"></span></div>
+        <div><strong class="text-indigo-400">Nickname:</strong> <span id="nickname"></span></div>
+        <div id="email-container" class="flex justify-between items-center gap-3">
+          <div class="flex items-center gap-2">
+            <strong class="text-indigo-400">Email:</strong>
+            <span id="email" class="font-mono"></span>
+          </div>
+          <button id="toggleEmail" class="text-sm text-indigo-400 no-underline hover:text-indigo-200 hover:underline focus:outline-none">
+            Tampilkan
+          </button>
+        </div>
+        <div><strong class="text-indigo-400">Age:</strong> <span id="age"></span></div>
+        <div><strong class="text-indigo-400">Gender:</strong> <span id="gender"></span></div>
+        <div><strong class="text-indigo-400">Bio:</strong> <span id="bio"></span></div>
+      </div>
+
+      <!-- Form edit profil -->
+      <form id="edit-form" style="display:none;" class="bg-gray-800 mt-6 rounded-lg p-6 shadow-md ">
+        <div><label class="block mb-1">User ID</label><input type="text" id="form-user-id" readonly class="w-full bg-gray-700 rounded p-2 cursor-default text-gray-400" /></div>
+        <div><label class="block mb-1">Nickname</label><input type="text" id="form-nickname" class="w-full bg-gray-700 rounded p-2 text-white" /></div>
+        <div><label class="block mb-1">Age</label><input type="number" min="0" max="99" id="form-age" class="w-full bg-gray-700 rounded p-2 text-white" /></div>
+        <div>
+          <label class="block mb-1">Gender</label>
+          <select id="form-gender" class="w-full bg-gray-700 rounded p-2 text-white">
+            <option value="0">Hide</option>
+            <option value="1">Boy</option>
+            <option value="2">Girl</option>
+          </select>
+        </div>
+        <div><label class="block mb-1">Bio</label><textarea id="form-bio" class="w-full bg-gray-700 rounded p-2 text-white"></textarea></div>
+        <div class="flex justify-end gap-3">
+          <button id="cancel-edit" type="button" class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700">Batal</button>
+          <button id="submit-edit" type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Simpan</button>
+        </div>
+      </form>
+
+      <!-- Tombol aksi bawah -->
+      <div class="flex justify-between mt-6 ">
+        <button id="edit-btn" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 rounded text-white font-medium">Edit Profil</button>
+        <a id="edit-pw-btn" href="/change-password">
+          <button class="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 rounded text-white font-medium">Ganti Password</button>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Notifikasi Toast -->
+  <div id="toast"
+    class="fixed top-24 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-base px-8 py-5 rounded-2xl shadow-2xl border border-white/30 flex items-center gap-3 transition-opacity duration-300 z-50 opacity-0 pointer-events-none">
+    <svg class="w-6 h-6 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+      <line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="16" r="1" fill="currentColor"/>
+    </svg>
+    <span id="toastMessage"></span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="z-10 bg-gray-950 border-t border-gray-800 py-6 mt-auto">
+    <div class="w-full px-8 md:px-16 lg:px-24 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-500 text-sm">© 2025 Vulnarena. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

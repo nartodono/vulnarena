@@ -1,0 +1,36 @@
+{
+    "name": "k8s/core",
+    "description": "A set of needed interfaces, classes and exceptions for the k8s-client, k8s-api, and the websocket adapters.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chad Sikorra",
+            "email": "Chad.Sikorra@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "psr/http-message": "^1.0",
+        "doctrine/collections": "^1.5",
+        "psr/http-client": "^1.0"
+    },
+    "scripts": {
+        "cs-fix": [
+            "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
+            "php-cs-fixer fix src/ --rules=@PSR2"
+        ],
+        "analyse": [
+            "phpstan analyse"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "K8s\\Core\\": "src/K8s/Core"
+        }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.12",
+        "friendsofphp/php-cs-fixer": "^2.0"
+    }
+}

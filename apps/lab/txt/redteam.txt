@@ -1,0 +1,5 @@
+Red Team adalah tim keamanan siber yang bertugas untuk melakukan simulasi serangan terhadap sistem, jaringan, atau aplikasi dengan tujuan mengidentifikasi celah keamanan.
+
+Tugas utama Red Team adalah berpikir dan bertindak seperti penyerang sebenarnya agar organisasi dapat memahami dan memperbaiki kelemahan sebelum diserang pihak luar.
+
+Red Team sering melakukan pengujian penetrasi, social engineering, dan eksploitasi kerentanan secara menyeluruh.

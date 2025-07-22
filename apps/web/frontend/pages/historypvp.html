@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vulnarena - Learn and Battle</title>
+  <link rel="icon" href="/style/resource/img/favicon_vulnarena.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/style/output.css">
+  <script type="module" src="./../js/historypvp.js?a=23" defer></script>
+  <script type="module" src="./../js/global.js?v=107" defer></script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+  <style>
+    @keyframes slideDown {
+      0% { opacity: 0; transform: translateY(-10%); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-down {
+      animation: slideDown 0.3s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-200 font-sans antialiased">
+  <div class="flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <header class="bg-gray-900 shadow-md fixed top-0 left-0 w-full z-50">
+      <div class="w-full h-16 flex items-center justify-between px-8">
+        <a href="/" class="text-xl font-bold text-white">Vulnarena</a>
+        <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <nav class="hidden md:flex h-full">
+          <ul class="flex items-stretch h-full text-white font-medium">
+            <li class="h-full"><a href="/" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Beranda</a></li>
+            <li class="h-full"><a href="/learn" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Belajar</a></li>
+            <li class="h-full"><a href="/labs" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Lab</a></li>
+            <li class="h-full"><a href="/pvp" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Bermain</a></li>
+          </ul>
+        </nav>
+        <div id="auth-desktop" class="hidden md:flex gap-3"></div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-8 py-4 animate-slide-down">
+        <ul class="flex flex-col gap-3 text-white font-medium">
+          <li><a href="/" class="block hover:text-indigo-300">Beranda</a></li>
+          <li><a href="/learn" class="block hover:text-indigo-300">Belajar</a></li>
+          <li><a href="/labs" class="block hover:text-indigo-300">Lab</a></li>
+          <li><a href="/pvp" class="block hover:text-indigo-300">Bermain</a></li>
+        </ul>
+        <div id="auth-mobile" class="mt-4 flex flex-col gap-3"></div>
+      </div>
+    </header>
+
+    <!-- Main Match History Content -->
+    <main class="pt-24 px-6 flex flex-col items-center">
+      <h1 class="text-3xl font-bold mb-4">📜 Riwayat Permainan</h1>
+      <a href="/pvp" class="inline-block mb-4 text-sm text-indigo-400 hover:underline">← Kembali ke PVP</a>
+      <div class="bg-gray-800 rounded-lg p-4 text-sm overflow-auto w-full max-w-4xl mx-auto my-4">
+        <table class="table-auto text-sm w-full text-center">
+          <thead class="bg-gray-800 text-gray-300">
+            <tr>
+              <th class="px-4 py-2">Match ID</th>
+              <th class="px-4 py-2">Hasil</th>
+              <th class="px-4 py-2">Penambahan MMR</th>
+              <th class="px-4 py-2">Waktu</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody" class="divide-y divide-gray-700 bg-gray-900"></tbody>
+        </table>
+      </div>
+      <div class="flex justify-center mt-6 gap-2" id="pagination"></div>
+      <div class="mt-4 flex justify-center items-center gap-4">
+        <label for="rowsPerPage" class="text-sm">Tampilkan per halaman:</label>
+        <select id="rowsPerPage" class="bg-gray-800 text-white px-3 py-1 rounded border border-gray-600 focus:outline-none">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 border-t border-gray-800 py-6 mt-auto">
+      <div class="w-full px-8 md:px-16 lg:px-24 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-500 text-sm">© 2025 Vulnarena. All rights reserved.</p>
+        <div class="space-x-4 text-sm">
+          <a href="#" class="text-gray-400 hover:text-white">Privacy</a>
+          <a href="#" class="text-gray-400 hover:text-white">Terms</a>
+          <a href="#" class="text-gray-400 hover:text-white">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- <script type="module" src="./../js/historymatch.js?v=35" defer></script> -->
+</body>
+</html>

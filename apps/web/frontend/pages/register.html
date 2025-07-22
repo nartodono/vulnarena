@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Vulnarena</title>
+  <link rel="icon" href="/style/resource/img/favicon_vulnarena.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/style/output.css">
+  <script src="./../js/register.js?a=2" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script type="module" src="./../js/global.js?v=107" defer></script>
+  <script>
+    particlesJS.load('particles-js', './../particlesjs-config.json');
+  </script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+  <style>
+    @keyframes slideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-10%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-slide-down {
+      animation: slideDown 0.3s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center font-sans" style="background: linear-gradient(to bottom, #5b90be 0%, #a6c7e3 50%, #a6c7e3 100%)">
+  <div id="particles-js"  class="fixed inset-0 z-0 "></div>
+  
+  <!-- Navbar -->
+    <header class="bg-gray-900 shadow-md fixed top-0 left-0 w-full z-50">
+      <div class="w-full h-16 flex items-center justify-between px-8">
+        <a href="/" class="text-xl font-bold text-white">Vulnarena</a>
+        <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <nav class="hidden md:flex h-full">
+          <ul class="flex items-stretch h-full text-white font-medium">
+            <li class="h-full"><a href="/" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Beranda</a></li>
+            <li class="h-full"><a href="/learn" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Belajar</a></li>
+            <li class="h-full"><a href="/labs" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Lab</a></li>
+            <li class="h-full"><a href="/pvp" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Bermain</a></li>
+          </ul>
+        </nav>
+        <div id="auth-desktop" class="hidden md:flex gap-3"></div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-8 py-4 animate-slide-down">
+        <ul class="flex flex-col gap-3 text-white font-medium">
+          <li><a href="/" class="block hover:text-indigo-300">Beranda</a></li>
+          <li><a href="/learn" class="block hover:text-indigo-300">Belajar</a></li>
+          <li><a href="/labs" class="block hover:text-indigo-300">Lab</a></li>
+          <li><a href="/pvp" class="block hover:text-indigo-300">Bermain</a></li>
+        </ul>
+        <div id="auth-mobile" class="mt-4 flex flex-col gap-3"></div>
+      </div>
+    </header>
+
+  <!-- form register -->
+  <div class="flex items-center justify-center w-full pt-32 pb-40 min-h-[calc(100vh-4rem)]">
+    <div class="bg-gray-900 p-10 rounded-xl shadow-xl w-full max-w-md z-10 border border-gray-800">
+      <div class="flex justify-center mb-6">
+        <h1 class="text-3xl font-extrabold text-white tracking-wide">Vulnarena</h1>
+      </div>
+
+      <form method="post" id="register-form" class="space-y-6">
+        <h1 class="text-center text-xl font-extrabold text-white animate-pulse tracking-wide">DAFTAR</h1>
+
+        <div>
+          <label for="username" class="block text-sm font-medium text-gray-300 mb-1">Username</label>
+          <input type="text" name="username" required
+            class="block w-full mt-1 px-4 py-2 bg-gray-800 text-white placeholder-gray-400 border border-gray-700 rounded focus:ring-cyan-500 focus:border-cyan-500 focus:outline-none"
+            placeholder="Masukkan username" />
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+          <input type="email" name="email" required
+            class="block w-full mt-1 px-4 py-2 bg-gray-800 text-white placeholder-gray-400 border border-gray-700 rounded focus:ring-cyan-500 focus:border-cyan-500 focus:outline-none"
+            placeholder="Masukkan email" />
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-300 mb-1">Password</label>
+          <input type="password" name="password" required
+            class="block w-full mt-1 px-4 py-2 bg-gray-800 text-white placeholder-gray-400 border border-gray-700 rounded focus:ring-cyan-500 focus:border-cyan-500 focus:outline-none"
+            placeholder="Masukkan password" />
+        </div>
+
+        <div>
+          <label for="confirmPassword" class="block text-sm font-medium text-gray-300 mb-1">Konfirmasi Password</label>
+          <input type="password" name="confirmPassword" required
+            class="block w-full mt-1 px-4 py-2 bg-gray-800 text-white placeholder-gray-400 border border-gray-700 rounded focus:ring-cyan-500 focus:border-cyan-500 focus:outline-none"
+            placeholder="Ulangi password" />
+        </div>
+
+        <button type="submit"
+          class="w-full bg-cyan-600 hover:bg-cyan-700 py-2 rounded-full text-white font-semibold active:scale-[0.97] transition transform duration-100">
+          Daftar Sekarang
+        </button>
+
+        <p class="pt-2 text-center text-sm text-gray-400">
+          Sudah punya akun?
+          <a href="/login" class="text-cyan-400 hover:underline font-medium">Masuk di sini</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- OTP Modal -->
+  <div id="otpModal" class="hidden fixed inset-0 backdrop-blur-sm bg-gray-900/60 justify-center items-center z-50">
+    <div class="bg-white p-8 rounded-xl shadow-lg max-w-md w-full text-center">
+      <h2 class="text-xl font-bold mb-4">Verifikasi OTP</h2>
+      <p id="otpInfoText" class="text-sm text-gray-600 mb-4">Kami telah mengirim kode OTP ke email Anda. Silakan masukkan di bawah.</p>
+      
+      <input id="otpInput" type="text" maxlength="6" class="w-full border px-4 py-2 rounded mb-4 text-center" placeholder="••••••" required/>
+      
+      <button id="verifyOtpBtn" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 active:scale-[0.97] transition transform duration-100">Verifikasi</button>
+      
+      <p id="cooldownOtpText" class="mb-2 hidden h-5 py-4 text-sm text-gray-600"></p>
+      <p id="resendOtpText" class="mb-2 hidden h-5 py-4 text-sm text-gray-600">
+        Belum menerima kode OTP?
+        <button id="resendOtpBtn" type="submit" class="text-blue-600 hover:underline font-medium">kirim ulang</button><br>
+        batas pengiriman tersisa <span id="resendOtpLimit"></span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Notification Modal -->
+  <div id="notifyModal" class="hidden fixed inset-0 backdrop-blur-sm bg-gray-900/60 justify-center items-center z-100">
+    <div class="bg-gray-800 p-10 rounded-xl shadow-xl max-w-md w-full text-center">
+      <h2 class="text-white text-2xl  font-semibold mb-2" id="notifyTitle"></h2>
+      <p class="text-white mb-4" id="notifyMessage"></p>
+      <button id="notifyCloseBtn" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 active:scale-[0.92] transition transform duration-100">OK</button>
+    </div>
+  </div>
+
+</body>
+</html>

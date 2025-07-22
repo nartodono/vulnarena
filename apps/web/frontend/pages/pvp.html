@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Battle Quiz PvP - Vulnarena</title>
+<link rel="stylesheet" href="/style/output.css">
+<link rel="icon" href="/style/resource/img/favicon_vulnarena.ico" type="image/x-icon">
+<script type="module" src="./../js/global.js?v=107" defer></script>
+<style>
+  body {
+    background: radial-gradient(ellipse at top, #0f172a 0%, #000 100%);
+  }
+  .grid-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+  }
+  .fade-in {
+    animation: fadeInUp 0.8s ease-in-out both;
+  }
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideDown {
+    0% { opacity: 0; transform: translateY(-10%); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out forwards;
+  }
+</style>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+  }
+</script>
+</head>
+
+<body class="bg-gray-950 text-white font-sans antialiased relative overflow-x-hidden">
+
+<div class="absolute w-full h-full top-0 left-0 grid-bg pointer-events-none z-0"></div>
+
+<!-- Navbar -->
+<header class="bg-gray-900 shadow-md fixed top-0 left-0 w-full z-50">
+  <div class="w-full h-16 flex items-center justify-between px-8">
+    <a href="/" class="text-xl font-bold text-white">Vulnarena</a>
+    <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+    <nav class="hidden md:flex h-full">
+      <ul class="flex items-stretch h-full text-white font-medium">
+        <li class="h-full"><a href="/" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Beranda</a></li>
+        <li class="h-full"><a href="/learn" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Belajar</a></li>
+        <li class="h-full"><a href="/labs" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Lab</a></li>
+        <li class="h-full"><a href="/pvp" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Bermain</a></li>
+      </ul>
+    </nav>
+    <div id="auth-desktop" class="hidden md:flex gap-3"></div>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-8 py-4 animate-slide-down">
+    <ul class="flex flex-col gap-3 text-white font-medium">
+      <li><a href="/" class="block hover:text-indigo-300">Beranda</a></li>
+      <li><a href="/learn" class="block hover:text-indigo-300">Belajar</a></li>
+      <li><a href="/labs" class="block hover:text-indigo-300">Lab</a></li>
+      <li><a href="/pvp" class="block hover:text-indigo-300">Bermain</a></li>
+    </ul>
+    <div id="auth-mobile" class="mt-4 flex flex-col gap-3"></div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="pt-32 pb-24 relative z-10 px-6 lg:px-16 xl:px-32 fade-in">
+  <div class="max-w-4xl mx-auto bg-gray-800 rounded-lg p-6 shadow">
+
+    <div class="flex justify-between items-center mb-4">
+      <div>
+        <h2 class="text-cyan-400 font-semibold">🧑 Kamu: <span class="text-white font-bold">Defender123</span></h2>
+        <p class="text-sm text-gray-400">Skor: <span class="font-bold text-white">1200</span></p>
+      </div>
+      <div>
+        <h2 class="text-pink-400 font-semibold">👾 Musuh: <span class="text-white font-bold">H4x0rPwnz</span></h2>
+        <p class="text-sm text-gray-400">Skor: <span class="font-bold text-white">1100</span></p>
+      </div>
+    </div>
+
+    <div class="bg-gray-900 p-4 rounded mb-4">
+      <h3 class="text-lg font-semibold text-indigo-400 mb-2">⚡ Soal #10</h3>
+      <p class="text-sm text-gray-300 mb-2">Lengkapi potongan kode PHP berikut ini agar input user tidak menjadi celah XSS:</p>
+      <pre class="bg-gray-800 text-sm text-cyan-300 rounded p-4 overflow-x-auto">
+        &lt;?php
+        $user_input = $_GET['name'];
+        echo <span class="text-pink-400 font-bold">_____</span>($user_input);
+        ?&gt;
+      </pre>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <button class="answer-option bg-indigo-600 py-3 px-4 rounded hover:scale-105 transition-transform">A. htmlentities</button>
+      <button class="answer-option bg-indigo-600 py-3 px-4 rounded hover:scale-105 transition-transform">B. eval</button>
+      <button class="answer-option bg-indigo-600 py-3 px-4 rounded hover:scale-105 transition-transform">C. htmlspecialchars</button>
+      <button class="answer-option bg-indigo-600 py-3 px-4 rounded hover:scale-105 transition-transform">D. echo $_GET['name'] langsung</button>
+    </div>
+
+   
+    <!-- Tombol Kumpulkan -->
+    <div class="mt-4 text-center">
+      <a href="/detail-pvp" class="inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded shadow transition duration-300">
+        📨 Kumpulkan Jawaban
+      </a>
+    </div>
+
+  </div>
+
+  <div class="mt-12 bg-gray-800 p-4 rounded shadow text-center max-w-2xl mx-auto">
+    <h2 class="text-lg font-semibold text-cyan-400 mb-2">⚡ Status Skor</h2>
+    <p class="text-sm text-gray-300">Kamu: <strong>1200 pts</strong> | Musuh: <strong>1100 pts</strong></p>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-950 border-t border-gray-800 py-6 mt-auto">
+  <div class="w-full px-8 md:px-16 lg:px-24 flex flex-col md:flex-row justify-between items-center">
+    <p class="text-gray-500 text-sm">© 2025 Vulnarena. All rights reserved.</p>
+    <div class="space-x-4 text-sm">
+      <a href="#" class="text-gray-400 hover:text-white">Privacy</a>
+      <a href="#" class="text-gray-400 hover:text-white">Terms</a>
+      <a href="#" class="text-gray-400 hover:text-white">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Script Pilihan -->
+<script>
+  document.querySelectorAll('.answer-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.answer-option').forEach(b => {
+        b.classList.remove('bg-green-600', 'text-white', 'ring-2', 'ring-green-400');
+        b.classList.add('bg-indigo-600');
+      });
+      btn.classList.remove('bg-indigo-600');
+      btn.classList.add('bg-green-600', 'text-white', 'ring-2', 'ring-green-400');
+    });
+  });
+</script>
+
+</body>
+</html>

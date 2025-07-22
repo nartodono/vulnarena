@@ -1,0 +1,80 @@
+    .container {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: #1e293b;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container h2 {
+        margin: 0 0 1rem 0;
+        color: #facc15;
+        font-size: 1.75rem;
+        text-align: center;
+    }
+
+    .search-section {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .search-section p {
+        text-align: center;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .search-section form {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .search-section input[type="text"] {
+        flex: 1;
+        max-width: 300px;
+        padding: 0.4rem;
+        border: none;
+        border-radius: 0.25rem;
+    }
+
+    .search-section button {
+        background-color: #10b981;
+        border: none;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.25rem;
+        color: #f8fafc;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .search-section button:hover {
+        background-color: #059669;
+    }
+
+    .reset-link {
+        display: inline-block;
+        background-color: #3b82f6;
+        color: #f8fafc;
+        text-decoration: none;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.25rem;
+        transition: background-color 0.3s;
+        margin-top: 1.5rem;
+    }
+
+    .reset-link:hover {
+        background-color: #2563eb;
+    }
+
+    .result {
+        margin-top: 1rem;
+        background-color: #334155;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        width: 100%;
+        text-align: center;
+    }

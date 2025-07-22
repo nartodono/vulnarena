@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/style/output.css">
+<script type="module" src="./../js/global.js?v=107" defer></script>
+<script type="module" src="/js/PostTest.js?v=38" defer></script>
+
+<style>
+  body {
+    background: radial-gradient(ellipse at top, #0f172a 0%, #000 100%);
+  }
+  .grid-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+  }
+  .fade-in {
+    animation: fadeInUp 0.8s ease-in-out both;
+  }
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .z--1 { z-index: -1; }
+
+</style>
+<script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+  <style>
+    @keyframes slideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-10%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-slide-down {
+      animation: slideDown 0.3s ease-out forwards;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-950 text-white font-sans antialiased relative overflow-x-hidden">
+
+<div class="absolute w-full h-full top-0 left-0 grid-bg pointer-events-none z--1"></div>
+
+<!-- Navbar -->
+    <header class="bg-gray-900 shadow-md fixed top-0 left-0 w-full z-50">
+      <div class="w-full h-16 flex items-center justify-between px-8">
+        <a href="/" class="text-xl font-bold text-white">Vulnarena</a>
+        <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <nav class="hidden md:flex h-full">
+          <ul class="flex items-stretch h-full text-white font-medium">
+            <li class="h-full"><a href="/" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Beranda</a></li>
+            <li class="h-full"><a href="/learn" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Belajar</a></li>
+            <li class="h-full"><a href="/labs" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Lab</a></li>
+            <li class="h-full"><a href="/pvp" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Bermain</a></li>
+          </ul>
+        </nav>
+        <div id="auth-desktop" class="hidden md:flex gap-3"></div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-8 py-4 animate-slide-down">
+        <ul class="flex flex-col gap-3 text-white font-medium">
+          <li><a href="/" class="block hover:text-indigo-300">Beranda</a></li>
+          <li><a href="/learn" class="block hover:text-indigo-300">Belajar</a></li>
+          <li><a href="/labs" class="block hover:text-indigo-300">Lab</a></li>
+          <li><a href="/pvp" class="block hover:text-indigo-300">Bermain</a></li>
+        </ul>
+        <div id="auth-mobile" class="mt-4 flex flex-col gap-3"></div>
+      </div>
+    </header>
+
+<!-- Main Content -->
+  <main class="z-10 pt-24 pb-16 px-6 max-w-5xl mx-auto">
+    <h1 class="text-3xl font-bold text-cyan-400 mb-6 text-center">🧠 Kuis Evaluasi Web Security</h1>
+    <form id="quizForm" class="space-y-6">
+      <div id="quizContainer" class="space-y-6"></div>
+      <button id="submitBtn" type="submit" class="mt-6 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-md">
+        Submit Jawaban
+      </button>
+    </form>
+    <div id="result" class="mt-8 text-xl font-bold text-yellow-400 text-center"></div>
+
+<!-- Tombol Tambahan -->
+    <div class="mt-8 space-y-2">
+        <button type="button" id="showBtn" class="hidden w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-md">
+            Tampilkan Penjelasan
+        </button>
+        <button type="button" id="resetQuizBtn" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 rounded-md">
+            Reset Kuis
+        </button>
+</div>
+<!-- Popup Modal -->
+    <div id="popupModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+    <div class="bg-gray-900 rounded-lg shadow-xl max-w-xl w-full p-6">
+        <h2 id="popupTitle" class="text-xl font-bold text-cyan-400 mb-4"></h2>
+        <div id="popupContent" class="text-gray-200 space-y-4 max-h-[60vh] overflow-y-auto"></div>
+        <div class="mt-6 text-right">
+        <button id="popupCloseBtn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded">
+            Tutup
+        </button>
+        </div>
+    </div>
+    </div>
+
+  </main>
+
+<!-- Footer -->
+<footer class="z-50 bg-gray-950 border-t border-gray-800 py-6 mt-auto">
+  <div class="w-full px-8 md:px-16 lg:px-24 flex flex-col md:flex-row justify-between items-center">
+    <p class="text-gray-500 text-sm">© 2025 Vulnarena. All rights reserved.</p>
+    <div class="space-x-4 text-sm">
+      <a href="#" class="text-gray-400 hover:text-white">Privacy</a>
+      <a href="#" class="text-gray-400 hover:text-white">Terms</a>
+      <a href="#" class="text-gray-400 hover:text-white">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

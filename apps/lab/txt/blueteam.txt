@@ -1,0 +1,5 @@
+Blue Team adalah tim keamanan siber yang bertanggung jawab untuk mempertahankan, memantau, dan melindungi sistem, jaringan, serta data dari berbagai ancaman dan serangan.
+
+Tugas utama Blue Team meliputi deteksi, analisis, serta respon terhadap insiden keamanan. Blue Team juga melakukan monitoring secara real-time, penerapan kebijakan keamanan, dan perbaikan celah keamanan yang ditemukan.
+
+Blue Team berperan penting dalam menjaga keamanan organisasi dari serangan yang dilakukan oleh Red Team maupun ancaman eksternal lainnya.

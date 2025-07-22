@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vulnarena - Learn and Battle</title>
+  <link rel="stylesheet" href="/style/output.css">
+  <link rel="icon" href="/style/resource/img/favicon_vulnarena.ico" type="image/x-icon">
+  <script type="module" src="./../js/global.js?v=107" defer></script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
+  <style>
+    @keyframes slideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-10%);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-slide-down {
+      animation: slideDown 0.3s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-200 font-sans antialiased">
+  <div class="flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <header class="bg-gray-900 shadow-md fixed top-0 left-0 w-full z-50">
+      <div class="w-full h-16 flex items-center justify-between px-8">
+        <a href="/" class="text-xl font-bold text-white">Vulnarena</a>
+        <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <nav class="hidden md:flex h-full">
+          <ul class="flex items-stretch h-full text-white font-medium">
+            <li class="h-full"><a href="/" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Beranda</a></li>
+            <li class="h-full"><a href="/learn" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Belajar</a></li>
+            <li class="h-full"><a href="/labs" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Lab</a></li>
+            <li class="h-full"><a href="/pvp" class="h-full flex items-center px-10 hover:bg-white/20 transition duration-300">Bermain</a></li>
+          </ul>
+        </nav>
+        <div id="auth-desktop" class="hidden md:flex gap-3"></div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-8 py-4 animate-slide-down">
+        <ul class="flex flex-col gap-3 text-white font-medium">
+          <li><a href="/" class="block hover:text-indigo-300">Beranda</a></li>
+          <li><a href="/learn" class="block hover:text-indigo-300">Belajar</a></li>
+          <li><a href="/labs" class="block hover:text-indigo-300">Lab</a></li>
+          <li><a href="/pvp" class="block hover:text-indigo-300">Bermain</a></li>
+        </ul>
+        <div id="auth-mobile" class="mt-4 flex flex-col gap-3"></div>
+      </div>
+    </header>
+
+      <!-- Main Content -->
+      <main class="flex-grow pt-32 pb-24 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-blue-300 to-gray-900">
+        <section class="text-center mb-16">
+          <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-white">Mulai Belajar Keamanan Web</h1>
+          <p class="text-lg text-white max-w-3xl mx-auto">
+            Materi-materi pembelajaran dirancang dari dasar hingga lanjutan untuk membantu kamu memahami konsep keamanan web secara mendalam dan praktikal.
+          </p>
+        </section>
+
+        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Card Template -->
+          <a href="/learn/cyber-introduction" class="block cursor-pointer bg-gray-900 rounded-xl p-6 border-2 animate-border-cycle transition-transform transform hover:scale-105 active:scale-95 hover:shadow-lg hover:ring-2">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="text-xl font-semibold text-white mb-2">Pengenalan Web Security</h3>
+                <p class="text-gray-400 text-sm">HTTP, HTTPS, cookies, dan otentikasi dasar.</p><br>
+              </div>
+              <span class="text-indigo-400 text-2xl self-center">→</span>
+            </div>
+          </a>
+
+          <a href="/learn/red-team" class="block cursor-pointer bg-gray-900 rounded-xl p-6 border-2 animate-border-cycle transition-transform transform hover:scale-105 active:scale-95 hover:shadow-lg hover:ring-2">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="text-xl font-semibold text-white mb-2">Red Team Operations</h3>
+                <p class="text-gray-400 text-sm">Simulasi penyerangan untuk menguji pertahanan organisasi.</p>
+              </div>
+              <span class="text-indigo-400 text-2xl self-center">→</span>
+            </div>
+          </a>
+
+          <a href="/learn/blue-team" class="block cursor-pointer bg-gray-900 rounded-xl p-6 border-2 animate-border-cycle transition-transform transform hover:scale-105 active:scale-95 hover:shadow-lg hover:ring-2">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="text-xl font-semibold text-white mb-2">Blue Team Defense</h3>
+                <p class="text-gray-400 text-sm">Deteksi, respon, dan mitigasi terhadap serangan cyber nyata.</p>
+              </div>
+              <span class="text-indigo-400 text-2xl self-center">→</span>
+            </div>
+          </a>
+
+          <a href="/learn/basic-html" class="block cursor-pointer bg-gray-900 rounded-xl p-6 border-2 animate-border-cycle transition-transform transform hover:scale-105 active:scale-95 hover:shadow-lg hover:ring-2">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="text-xl font-semibold text-white mb-2">Basic HTML & Forms</h3>
+                <p class="text-gray-400 text-sm">Dasar struktur HTML dan form untuk keamanan input.</p>
+              </div>
+              <span class="text-indigo-400 text-2xl self-center">→</span>
+            </div>
+          </a>
+
+          <a href="/learn/xss" class="block cursor-pointer bg-gray-900 rounded-xl p-6 border-2 animate-border-cycle transition-transform transform hover:scale-105 active:scale-95 hover:shadow-lg hover:ring-2">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="text-xl font-semibold text-white mb-2">XSS (Cross Site Scripting)</h3>
+                <p class="text-gray-400 text-sm">Pelajari serangan injeksi script pada browser.</p>
+              </div>
+              <span class="text-indigo-400 text-2xl self-center">→</span>
+            </div>
+          </a>
+
+          <a href="/learn/path-traversal" class="block cursor-pointer bg-gray-900 rounded-xl p-6 border-2 animate-border-cycle transition-transform transform hover:scale-105 active:scale-95 hover:shadow-lg hover:ring-2">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="text-xl font-semibold text-white mb-2">Path Traversal</h3>
+                <p class="text-gray-400 text-sm">Akses file atau direktori secara tidak sah di luar folder yang diizinkan.</p>
+              </div>
+              <span class="text-indigo-400 text-2xl self-center">→</span>
+            </div>
+          </a>
+
+          <a href="/learn/sql-injection" class="block cursor-pointer bg-gray-900 rounded-xl p-6 border-2 animate-border-cycle transition-transform transform hover:scale-105 active:scale-95 hover:shadow-lg hover:ring-2">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="text-xl font-semibold text-white mb-2">SQL Injection</h3>
+                <p class="text-gray-400 text-sm">Eksploitasi query database secara berbahaya.</p>
+              </div>
+              <span class="text-indigo-400 text-2xl self-center">→</span>
+            </div>
+          </a>
+
+          <a href="/learn/command-injection" class="block cursor-pointer bg-gray-900 rounded-xl p-6 border-2 animate-border-cycle transition-transform transform hover:scale-105 active:scale-95 hover:shadow-lg hover:ring-2">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="text-xl font-semibold text-white mb-2">Command Injection</h3>
+                <p class="text-gray-400 text-sm">Celah yang memungkinkan penyerang menjalankan perintah shell di server.</p>
+              </div>
+              <span class="text-indigo-400 text-2xl self-center">→</span>
+            </div>
+          </a>
+
+          <a href="/learn/broken-access-control" class="block cursor-pointer bg-gray-900 rounded-xl p-6 border-2 animate-border-cycle transition-transform transform hover:scale-105 active:scale-95 hover:shadow-lg hover:ring-2">
+            <div class="flex items-start justify-between">
+              <div>
+                <h3 class="text-xl font-semibold text-white mb-2">Broken Access Control</h3>
+                <p class="text-gray-400 text-sm">Eksploitasi kelemahan kontrol akses.</p>
+              </div>
+              <span class="text-indigo-400 text-2xl self-center">→</span>
+            </div>
+          </a>
+        </section>
+
+        <!-- Tombol Post Test -->
+        <div class="w-full px-6 md:px-16 lg:px-24 py-12 mt-12 text-center">
+          <a href="/post-test">
+            <button class="px-6 py-3 bg-indigo-600 text-white text-lg font-semibold rounded-lg hover:bg-indigo-700 transition duration-300 shadow-md">
+              🚀 Mulai Post Test
+            </button>
+          </a>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="bg-gray-950 border-t border-gray-800 py-6 mt-auto">
+        <div class="w-full px-8 md:px-16 lg:px-24 flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-500 text-sm">© 2025 Vulnarena. All rights reserved.</p>
+          
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
