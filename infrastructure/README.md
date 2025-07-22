@@ -34,8 +34,8 @@ This folder contains all Kubernetes deployment files used throughout the develop
 ## Notes
 
 - All files are organized to support development, testing, and automation tasks within the Vulnarena project.
-- All of these deployment files have been tested and work in my environment. If you would like to use them, please review and adjust the configuration as needed to fit your own infrastructure setup.
-- And if you're using either the main-vulnarena.yaml or api-vulnarena.yaml please read the Manual Pod Setup section below
+- All of these deployment files have been tested and verified in my environment. If you would like to use them, please review and adjust the configuration as needed to fit your own infrastructure setup.
+- If you're using either the `main-vulnarena.yaml` or `api-vulnarena.yaml`, please read the **Manual Pod Setup** section below.
 
 ## Manual Pod Setup (Development Note)
 
@@ -45,7 +45,11 @@ This folder contains all Kubernetes deployment files used throughout the develop
 > All required packages (Apache, PHP, Supervisor, etc.) are **installed manually inside the running pod** using shell commands. This approach is temporary and used as a workaround for current image build issues. The manual setup allows quick adjustments and fixes during active development.
 >
 > **How to set up:**
-> After the pod is running, exec into the container using ```bash kubectl exec -it {pod-name} -n {namespace where the pod in} -- /bin/sh ``` and run the following commands:
+> After the pod is running, exec into the container using:
+> ```bash
+> kubectl exec -it <pod-name> -n <namespace> -- /bin/sh
+> ```
+> Then run the following commands:
 >
 > **Backend:**
 > ```bash
@@ -77,5 +81,6 @@ This folder contains all Kubernetes deployment files used throughout the develop
 > ```
 >
 > This process should be replaced with a proper custom Docker image in future production deployments.
+
 
 
