@@ -1,0 +1,59 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vulnarenadb-main
+  namespace: vulnarena
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vulnarena-db
+  template:
+    metadata:
+      labels:
+        app: vulnarena-db
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8.0
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "uvuvwevwevweXABC123"
+            - name: MYSQL_DATABASE
+              value: "vulnarena"
+            - name: MYSQL_USER
+              value: "vulnarena-user"
+            - name: MYSQL_PASSWORD
+              value: "vulnarenaspace"
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-data
+              mountPath: /var/lib/mysql
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+      volumes:
+        - name: mysql-data
+          hostPath:
+            path: /data/mysql-fresh    # <-- FOLDER BARU DI DALAM VM MINIKUBE, JANGAN DI-MOUNT DARI HOST OS!
+            type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vulnarena-dbservice
+  namespace: vulnarena
+spec:
+  selector:
+    app: vulnarena-db
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+  type: ClusterIP

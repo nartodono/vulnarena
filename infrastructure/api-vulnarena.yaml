@@ -1,0 +1,116 @@
+# -------------------------------
+# DEPLOYMENT Backend
+# -------------------------------
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vulnarena-backend
+  namespace: vulnarena
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vulnarena-backend
+  template:
+    metadata:
+      labels:
+        app: vulnarena-backend
+    spec:
+      serviceAccountName: backend-serviceaccount
+      containers:
+      - name: backend
+        image: buildpack-deps:bookworm
+        ports:
+        - containerPort: 80
+        - containerPort: 8080
+        volumeMounts:
+        - name: backend-source
+          mountPath: /var/www/html
+        env:
+        - name: DB_HOST
+          value: "vulnarena-dbservice"  # sesuai database service yang udah kamu buat
+        - name: DB_DATABASE
+          value: "vulnarena"
+        - name: DB_USERNAME
+          value: "vulnarena-user"
+        - name: DB_PASSWORD
+          value: "vulnarenaspace"
+        command: ["/bin/sh", "-c"]
+        args: ["sleep infinity"]
+        # args:
+        #   - |
+        #     apt-get update \
+        #     && apt-get install -y apache2 php libapache2-mod-php php-mysqli curl unzip \
+        #     && a2enmod rewrite \
+        #     && sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf \
+        #     && service apache2 restart \
+        #     && tail -f /dev/null
+        resources:                # <<--- Tambahan di sini
+          requests:
+            cpu: "300m"
+            memory: "512Mi"
+          limits:
+            cpu: "1000m"
+            memory: "1Gi"
+      volumes:
+      - name: backend-source
+        hostPath:
+          path: /mnt/dev/web/backend
+          type: DirectoryOrCreate
+---
+# -------------------------------
+# SERVICE Backend
+# -------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: vulnarena-backend-service
+  namespace: vulnarena
+spec:
+  selector:
+    app: vulnarena-backend
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  - name: websocket
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: ClusterIP
+
+---
+# -------------------------------
+# INGRESS Backend
+# -------------------------------
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vulnarena-backend-ingress
+  namespace: vulnarena
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/enable-websocket: "true"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: api.vulnarena.space
+      http:
+        paths:
+          - path: /ws
+            pathType: Prefix
+            backend:
+              service:
+                name: vulnarena-backend-service
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vulnarena-backend-service
+                port:
+                  number: 80

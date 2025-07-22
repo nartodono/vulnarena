@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+  namespace: vulnarena
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin
+    spec:
+      containers:
+      - name: phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        ports:
+        - containerPort: 80
+        env:
+        - name: PMA_HOST
+          value: "vulnarena-dbservice"
+        - name: PMA_PORT
+          value: "3306"
+        - name: PMA_ABSOLUTE_URI
+          value: "https://phpmyadmin.vulnarena.space/"
+        - name: TRUSTED_PROXIES
+          value: "0.0.0.0/0"
+        - name: PMA_FORCE_SSL
+          value: "1"
+        resources:                       # DITAMBAHKAN
+          requests:
+            cpu: "25m"
+            memory: "32Mi"
+          limits:
+            cpu: "100m"
+            memory: "128Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpmyadmin-service
+  namespace: vulnarena
+spec:
+  selector:
+    app: phpmyadmin
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vulnarenadb-ingress
+  namespace: vulnarena
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: db.vulnarena.space
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: phpmyadmin-service
+            port:
+              number: 80

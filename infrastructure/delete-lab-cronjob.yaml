@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: delete-lab-cronjob
+  namespace: vulnarena
+spec:
+  schedule: "* * * * *"               # setiap 1 menit
+  concurrencyPolicy: Forbid           # supaya tidak overlap
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 15     # job & pod dihapus 15 detik setelah selesai
+      template:
+        spec:
+          serviceAccountName: backend-serviceaccount
+          containers:
+          - name: deleter
+            image: webdevops/php-apache:8.2
+            command: ["/bin/sh", "-c"]
+            args: ["php /var/www/html/api/labs/deleteLab.php"]
+            volumeMounts:
+            - name: backend-source
+              mountPath: /var/www/html
+            resources:                # DITAMBAHKAN
+              requests:
+                cpu: "50m"
+                memory: "64Mi"
+              limits:
+                cpu: "150m"
+                memory: "128Mi"
+          volumes:
+          - name: backend-source
+            hostPath:
+              path: /mnt/dev/web/backend
+              type: Directory
+          restartPolicy: OnFailure

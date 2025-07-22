@@ -1,0 +1,70 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+  namespace: vulnarena
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 4Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vulnarenadb-main
+  namespace: vulnarena
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vulnarena-db
+  template:
+    metadata:
+      labels:
+        app: vulnarena-db
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8.0
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "uvuvwevwevweXABC123"
+            - name: MYSQL_DATABASE
+              value: "vulnarena"
+            - name: MYSQL_USER
+              value: "vulnarena-user"
+            - name: MYSQL_PASSWORD
+              value: "vulnarenaspace"
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-data
+              mountPath: /var/lib/mysql
+          resources:
+            requests:
+              memory: "3Gi"
+              cpu: "500m"
+            limits:
+              memory: "5Gi"
+              cpu: "2000m"
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: mysql-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vulnarena-dbservice
+  namespace: vulnarena
+spec:
+  selector:
+    app: vulnarena-db
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+  type: ClusterIP

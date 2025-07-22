@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vulnarena-frontend
+  namespace: vulnarena
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vulnarena-frontend
+  template:
+    metadata:
+      labels:
+        app: vulnarena-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: buildpack-deps:bookworm
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: frontend-source
+          mountPath: /var/www/html
+        command: ["/bin/sh", "-c"]
+        args: ["sleep infinity"]
+        # args:
+        #   - |
+        #     apt-get update \
+        #     && apt-get install -y apache2 php curl nodejs npm unzip \
+        #     && a2enmod rewrite \
+        #     && sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf \
+        #     && cd /var/www/html \
+        #     && npm install tailwindcss @tailwindcss/cli \
+        #     && echo "Tailwind installed OK" \
+        #     && service apache2 restart \
+        #     && tail -f /dev/null
+        resources:                # <<--- Tambahan limit saja di sini
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+      volumes:
+      - name: frontend-source
+        hostPath:
+          path: /mnt/dev/web/frontend
+          type: DirectoryOrCreate
+
+---
+# -------------------------------
+# SERVICE Frontend
+# -------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: vulnarena-frontend-service
+  namespace: vulnarena
+spec:
+  selector:
+    app: vulnarena-frontend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: ClusterIP
+
+---
+# -------------------------------
+# INGRESS Frontend
+# -------------------------------
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vulnarena-frontend-ingress
+  namespace: vulnarena
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: vulnarena.space
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: vulnarena-frontend-service
+            port:
+              number: 80
