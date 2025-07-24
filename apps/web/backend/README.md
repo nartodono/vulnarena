@@ -4,9 +4,9 @@ This directory contains all backend/API source code used to process information 
 
 - **PHP (native):** The core backend logic is written in native PHP.
 - **Composer Packages:**
-  - **PHPMailer:** For sending emails.
-  - **K8S PHP Client:** For Kubernetes API interaction.
-  - **Ratchet:** For WebSocket communication.
+  - **PHPMailer:** Used to send OTP (One-Time Password) emails for registration and password recovery features.
+  - **K8S PHP Client:** Used to manage dynamic lab environments in Kubernetes, allowing users to create labs and supporting automated lab deletion via Minikube cronjobs.
+  - **Ratchet:** Implements the WebSocket server for the real-time PvP quiz feature.
 
 > All packages are managed by Composer and stored in the `/vendor` directory.
 
