@@ -2,16 +2,17 @@ This directory contains all backend/API source code used to process information 
 
 ## Tech Stack
 
-- **PHP (native)**: The core backend logic is written in native PHP.
-- **Composer Packages**:
-  - **PHPMailer**: For sending emails.
-  - **K8S PHP Client**: For Kubernetes API interaction.
-  - **Ratchet**: For WebSocket communication.
-  > All packages are managed by Composer and stored in the `/vendor` directory.
+- **PHP (native):** The core backend logic is written in native PHP.
+- **Composer Packages:**
+  - **PHPMailer:** For sending emails.
+  - **K8S PHP Client:** For Kubernetes API interaction.
+  - **Ratchet:** For WebSocket communication.
+
+> All packages are managed by Composer and stored in the `/vendor` directory.
 
 ## Directory Structure
 
-- `/api` — Contains all application logic and data processing endpoints.
+- `/api` — Application logic and data processing endpoints.
 - `/config` — Configuration files, including database credentials (`dbkey.php`). Previously, this folder also stored the Cloudflare key.
 - `/controller` — Manual routing scripts, used by `index.php` for request dispatching.
 - `/database` — Handles the database connection (returns a new `mysqli` instance).
@@ -19,10 +20,11 @@ This directory contains all backend/API source code used to process information 
 
 ## Security
 
-This API runs **completely independent** from the frontend service, as a standalone server.  
-Security features implemented include:
+This API is **completely independent** from the frontend service and runs as a standalone server.  
+Implemented security features include:
+
 - SQL Prepared Statements
-- CORS
+- CORS (Cross-Origin Resource Sharing)
 - CSRF Token validation
 - Session checks
 - HTTP Method validation
@@ -33,3 +35,7 @@ Security features implemented include:
 ---
 
 Feel free to review or use this backend/API code as a reference for learning or further development.
+
+> **Note:**  
+> While this server implements several security mechanisms, it is still a prototype and **not fully secure for production use**.  
+> Some recommended best practices—such as rate limiting and additional protections—are **not yet implemented**.
