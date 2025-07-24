@@ -54,7 +54,7 @@ Feel free to fork, study, or adapt the code for your own non-commercial learning
 
 ## License
 
-X
+MIT License
 
 ---
 
