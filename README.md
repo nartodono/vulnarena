@@ -41,6 +41,13 @@ _Watch Demonstration video on YouTube_
 
 ---
 
+Tech
+
+The websites is built within the Minikube (Kubernetes) infrastructure
+
+
+---
+
 ## Project Status
 
 This repository is released as an **open-source reference only**.  
@@ -55,13 +62,6 @@ Feel free to fork, study, or adapt the code for your own non-commercial learning
 ## License
 
 MIT License
-
----
-
-## Credits
-
-Developed by: me and my two other friends
-As part of the undergraduate thesis at [Your University/Department, optional]
 
 ---
 
