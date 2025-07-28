@@ -90,8 +90,8 @@ MIT License
 > **Notice:**
 > Vulnarena is not intended for large-scale production.  
 > This project is for educational and reference purposes only.
-> Some security and scalability measures (such as rate limiting, advanced pentesting, or massive user load balancing) have not been fully implemented or tested, as this project was developed as an academic prototype.
-> It is **not intended for production use** and may lack certain security and scalability features.
+> It is **not intended for production use** and may lack certain security and scalability features.  
+> Some measures—such as rate limiting, advanced pentesting, or massive user load balancing—have not been fully implemented or tested, as this project was developed as an academic prototype.
 >
 > Some comments in the code are written in Bahasa Indonesia.  
 > You may translate them to English if needed.  
