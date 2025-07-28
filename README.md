@@ -108,11 +108,12 @@ Discord: **4.dmin**
 
 ## Documentation Structure
 
-Each core module/service has its own README with specific setup and usage instructions:
+> This repository is not plug & play. Each part must be set up individually as described in the respective README files.
 
+Each core module/service has its own README with specific setup and usage instructions:
 - [Backend/API Setup](./apps/web/backend/README.md)
 - [Frontend/Web Setup](./apps/web/frontend/README.md)
 - [Lab Environment](./apps/lab/README.md)
 - [Infrastructure/Deployment](./infrastructure/README.md)
 
-> ⚠️ Please refer to each module’s README before attempting to run or modify the code.
+> Please refer to each module’s README before attempting to run or modify the code.
