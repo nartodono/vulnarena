@@ -40,7 +40,7 @@ PvP battles bring the excitement of real competition and learning at once.
 
 [![Watch the demo](https://img.youtube.com/vi/hWS9AQ-bCCg/hqdefault.jpg)](https://youtu.be/hWS9AQ-bCCg)
 
-_Watch Demonstration video on YouTube_
+_Watch the demonstration video on YouTube_
 
 ---
 
@@ -67,12 +67,6 @@ The backend API uses three main Composer packages:
 
 ---
 
-
-
-
-
----
-
 ## Project Status
 
 This repository is released as an **open-source reference only**.  
@@ -93,4 +87,17 @@ MIT License
 > **Notice:**  
 > This project is for educational and reference purposes only.  
 > It is **not intended for production use** and may lack certain security and scalability features.
+>
+> Some comments in the code are written in Bahasa Indonesia.  
+> You may translate them to English if needed.  
+> The website interface itself is in Bahasa Indonesia, but you are welcome to modify it as you wish.
 
+---
+
+## Contact
+
+Discord: **4.dmin**
+
+---
+
+Repository: [https://github.com/nartodono/vulnarena](https://github.com/nartodono/vulnarena)
