@@ -2,6 +2,9 @@
 
 **Vulnarena** is a prototype interactive website designed as an educational cybersecurity platform, originally developed as a final project (skripsi).
 
+Vulnarena is a uniquely complex open-source platform that brings together interactive cybersecurity learning, dynamic lab automation (with Kubernetes orchestration), and real-time PvP quiz—all in a single, modular system.  
+Such an integrated feature set is rarely found in academic or open-source projects, making Vulnarena a distinctive and valuable resource for both learners and developers.
+
 Vulnarena is the only open-source platform (so far) that combines:
 - **Interactive learning modules and post-test**
 - **Auto-generated dynamic labs for every user with automated cleanup**
@@ -84,8 +87,10 @@ MIT License
 
 ---
 
-> **Notice:**  
-> This project is for educational and reference purposes only.  
+> **Notice:**
+> Vulnarena is not intended for large-scale production.  
+> This project is for educational and reference purposes only.
+> Some security and scalability measures (such as rate limiting, advanced pentesting, or massive user load balancing) have not been fully implemented or tested, as this project was developed as an academic prototype.
 > It is **not intended for production use** and may lack certain security and scalability features.
 >
 > Some comments in the code are written in Bahasa Indonesia.  
