@@ -110,9 +110,9 @@ Discord: **4.dmin**
 
 Each core module/service has its own README with specific setup and usage instructions:
 
-- [Backend/API Setup](./apps/web/backend/readme.md)
-- [Frontend/Web Setup](./apps/web/frontend/readme.md)
-- [Lab Environment](./apps/web/labs/readme.md)
-- [Infrastructure/Deployment](./infrastructure/readme.md)
+- [Backend/API Setup](./apps/web/backend/README.md)
+- [Frontend/Web Setup](./apps/web/frontend/README.md)
+- [Lab Environment](./apps/web/labs/README.md)
+- [Infrastructure/Deployment](./infrastructure/README.md)
 
 > ⚠️ Please refer to each module’s README before attempting to run or modify the code.
