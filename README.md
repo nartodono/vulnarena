@@ -106,4 +106,13 @@ Discord: **4.dmin**
 
 ---
 
-Repository: [https://github.com/nartodono/vulnarena](https://github.com/nartodono/vulnarena)
+## Documentation Structure
+
+Each core module/service has its own README with specific setup and usage instructions:
+
+- [Backend/API Setup](./apps/web/backend/readme.md)
+- [Frontend/Web Setup](./apps/web/frontend/readme.md)
+- [Lab Environment](./apps/web/labs/readme.md)
+- [Infrastructure/Deployment](./infrastructure/readme.md)
+
+> ⚠️ Please refer to each module’s README before attempting to run or modify the code.
