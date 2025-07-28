@@ -112,7 +112,7 @@ Each core module/service has its own README with specific setup and usage instru
 
 - [Backend/API Setup](./apps/web/backend/README.md)
 - [Frontend/Web Setup](./apps/web/frontend/README.md)
-- [Lab Environment](./apps/web/labs/README.md)
+- [Lab Environment](./apps/lab/README.md)
 - [Infrastructure/Deployment](./infrastructure/README.md)
 
 > ⚠️ Please refer to each module’s README before attempting to run or modify the code.
