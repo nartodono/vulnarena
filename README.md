@@ -3,6 +3,7 @@
 **Vulnarena** is a prototype interactive website designed as an educational cybersecurity platform, originally developed as a final project (skripsi).
 
 Vulnarena is a uniquely complex open-source platform that brings together interactive cybersecurity learning, dynamic lab automation (with Kubernetes orchestration), and real-time PvP quiz—all in a single, modular system.  
+It is developed fully with native PHP (no frameworks), alongside HTML, CSS (Tailwind), and JavaScript.
 Such an integrated feature set is rarely found in academic or open-source projects, making Vulnarena a distinctive and valuable resource for both learners and developers.
 
 Vulnarena is the only open-source platform (so far) that combines:
@@ -49,7 +50,7 @@ _Watch the demonstration video on YouTube_
 
 ## Tech
 
-This website is built using **HTML**, **CSS (Tailwind)**, **JavaScript**, and **native PHP**, all running inside a Minikube-based infrastructure.
+This website is built **fully with native PHP (no frameworks)**, HTML, CSS (Tailwind), and JavaScript, all running inside a Minikube-based infrastructure.
 
 The platform follows a **decoupled architecture**:  
 - The user-facing website (frontend) and the backend API server are fully separated, each running on different subdomains and isolated at the pod level in Kubernetes.
