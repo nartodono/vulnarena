@@ -2,11 +2,14 @@
 
 **Vulnarena** is a prototype interactive website designed as an educational cybersecurity platform, originally developed as a final project (skripsi).
 
-This project provides:
-- Comprehensive learning materials on web security
-- Post-tests to assess user knowledge
-- A dynamic vulnerable lab environment for hands-on practice
-- A unique real-time PvP Quiz feature for competitive learning
+Vulnarena is the only open-source platform (so far) that combines:
+- **Interactive learning modules and post-test**
+- **Auto-generated dynamic labs for every user with automated cleanup**
+- **Real-time PvP quiz (Kahoot-style) with unique 1v1 matchmaking, MMR, and detailed match history**
+
+All features are designed for practical, hands-on cybersecurity learning—no more theory-only!  
+Labs are isolated (1 pod per user), and auto-delete keeps resources clean.  
+PvP battles bring the excitement of real competition and learning at once.
 
 ---
 
