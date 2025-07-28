@@ -41,9 +41,31 @@ _Watch Demonstration video on YouTube_
 
 ---
 
-Tech
+## Tech
 
-The websites is built within the Minikube (Kubernetes) infrastructure
+This website is built using **HTML**, **CSS (Tailwind)**, **JavaScript**, and **native PHP**, all running inside a Minikube-based infrastructure.
+
+The platform follows a **decoupled architecture**:  
+- The user-facing website (frontend) and the backend API server are fully separated, each running on different subdomains and isolated at the pod level in Kubernetes.
+- The database service is also deployed as a separate pod.
+
+For the **dynamic lab**, each user's lab environment is fully isolated using Kubernetes namespaces. Since each lab instance is intentionally vulnerable, a dedicated pod is created per user to ensure complete isolation—so one user cannot affect another user's lab.
+
+The codebase is written to be as clear, modular, and easy to understand as possible—especially the API, which uses native PHP with custom-built middleware and routing.
+
+The frontend aims to provide a smooth and modern user experience, using JavaScript for interactivity and Tailwind CSS for a clean design.
+
+### Backend API Composer Packages
+
+The backend API uses three main Composer packages:
+- **PHPMailer** — Sends OTP emails for registration and password reset.
+- **K8S PHP Client** — Manages the creation and deletion of dynamic labs for users via Kubernetes (including automated cleanup using cronjobs).
+- **Ratchet** — Implements the real-time WebSocket server for the PvP quiz feature.
+
+---
+
+
+
 
 
 ---
