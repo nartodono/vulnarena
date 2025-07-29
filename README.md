@@ -57,9 +57,10 @@ PvP battles bring the excitement of real competition and learning at once.
 - **PvP Quiz Mode:**  
   Compete live against other users in a cybersecurity quiz game inspired by Kahoot.
 
-  ![PvP Quiz](docs/images/pvp1.png)
-  ![PvP Result](docs/images/pvp2.png)
-  ![PvP Summary](docs/images/pvp3.png)
+  | Quiz Play Screen | Quiz Result Screen | Quiz Summary Screen |
+|------------------|-------------------|---------------------|
+| ![PvP Quiz](docs/images/pvp1.png) | ![PvP Result](docs/images/pvp2.png) | ![PvP Summary](docs/images/pvp3.png) |
+
 
 - **PvP Match History & MMR:**  
   View your quiz battle history, including win/loss stats and MMR record.
