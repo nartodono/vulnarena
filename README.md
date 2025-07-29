@@ -44,70 +44,32 @@ PvP battles bring the excitement of real competition and learning at once.
 - **Learning Materials & Post-Test:**  
   Access interactive cybersecurity content, then test your overall understanding with a comprehensive post-test covering all topics.
 
-  ![Learning Material List](docs/images/learningMaterial.png)
-  > *Learning Material List*
-  ---
-  
-  ![Learning Material Example](docs/images/learningXss.png)
-  > *Example of Learning Material*
-  ---
-  
-  ![Post-Test](docs/images/postTest.png)
-  > *Post-Test Feature*
----
-
-
 - **Dynamic Vulnerable Labs:**  
   Practice hands-on in real, intentionally vulnerable lab environments for practical learning.
 
-  ![Dynamic Lab Generator](docs/images/dynamicLab.png)
-  > *Lab Generator Page*
-  ---
-  
-  ![Dynamic Lab Features](docs/images/dynamicLabFeature.png)
-  > *Dynamic Lab Menu*
----
-
-
 - **PvP Quiz Mode:**  
   Compete live against other users in a cybersecurity quiz game inspired by Kahoot.
-  
-  ![PvP Quiz](docs/images/pvp1.png)<br>
-  > *PvP Quiz*
-  ---
-  
-  ![PvP Result](docs/images/pvp2.png)<br>
-  > *PvP Result*
-  ---
-  
-  ![PvP Summary](docs/images/pvp3.png)<br>
-  > *PvP Summary*
----
-
 
 - **PvP Match History & MMR:**  
   View your quiz battle history, including win/loss stats and MMR record.
 
-  ![PvP History](docs/images/pvphistory.png)
-  > *PvP History Page*
----
-
-
 - **User Account Management:**  
   Register, log in, edit your profile, change or recover your password—all essential features are included.
-
-  ![Account Management](docs/images/accountManagement.png)
-  > *User Accoung Management Page*
----
 
 
 - **Modern UI & UX:**  
   The platform includes a clean and functional user interface and user experience, designed for effective and comfortable learning.
 
-  ![Dashboard(long version)](docs/images/homePage(long).png)
-  > *Dashboard Page (Long Version)*
----
-  
+**Showcases**
+
+| ![Dashboard](docs/images/dashboard.png) | ![Lab Generator](docs/images/lab.png) |
+|:--:|:--:|
+| *Dashboard* | *Dynamic Lab Generator* |
+
+| ![Dynamic Lab Menu](docs/images/dynamic lab.png) | ![PvP Page](docs/images/pvp.png) |
+|:--:|:--:|
+| *Dynamic Lab Feature* | *PvP Home Page* |
+
 
 > **Note:**  
 > The images above are a bit blurry due to limited source quality.  
