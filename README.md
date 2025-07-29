@@ -44,19 +44,18 @@ PvP battles bring the excitement of real competition and learning at once.
 - **Learning Materials & Post-Test:**  
   Access interactive cybersecurity content, then test your overall understanding with a comprehensive post-test covering all topics.
 
-
-  ![Learning Material List](docs/images/learningMaterial.png)
+  ---
   > *Learning Material List*
-
-  ___
-
-  ![Learning Material Example](docs/images/learningXss.png)
-  > *Example of Learning Material*
-
-  ***
+  ![Learning Material List](docs/images/learningMaterial.png)
   
-  ![Post-Test](docs/images/postTest.png)
+  ---
+  > *Example of Learning Material*
+  ![Learning Material Example](docs/images/learningXss.png)
+  
+  ---
   > *Post-Test Feature*
+  ![Post-Test](docs/images/postTest.png)
+  
 
 - **Dynamic Vulnerable Labs:**  
   Practice hands-on in real, intentionally vulnerable lab environments for practical learning.
