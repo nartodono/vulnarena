@@ -11,6 +11,7 @@
 
 - [Project Overview](#vulnerability-arena)
 - [Features](#features)
+- [Showcases](#showcases)
 - [Demo](#demo)
 - [Tech](#tech)
 - [Documentation Structure](#documentation-structure)
@@ -60,7 +61,11 @@ PvP battles bring the excitement of real competition and learning at once.
 - **Modern UI & UX:**  
   The platform includes a clean and functional user interface and user experience, designed for effective and comfortable learning.
 
-**Showcases**
+---
+
+##Showcases
+
+These are some examples of the features and UI of Vulnarena:
 
 | ![Dashboard](docs/images/dashboard.png) | ![Lab Generator](docs/images/lab.png) |
 |:--:|:--:|
@@ -70,10 +75,9 @@ PvP battles bring the excitement of real competition and learning at once.
 |:--:|:--:|
 | *Dynamic Lab Feature* | *PvP Home Page* |
 
-
 > **Note:**  
-> The images above are a bit blurry due to limited source quality.  
-> For a clearer view, please watch the demo video in the [Demo](#demo) section below.
+> The images above represent only a small part of Vulnarena.  
+> For a clearer view and more examples, please watch the demo video in the [Demo](#demo) section below.
 
 ---
 
