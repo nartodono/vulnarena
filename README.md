@@ -81,11 +81,11 @@ Check out some examples of Vulnarena’s features and interface:
 
 ---
 
-## Demo
+## Demo 
 
-[![Watch the demo](https://img.youtube.com/vi/hWS9AQ-bCCg/hqdefault.jpg)](https://youtu.be/hWS9AQ-bCCg)
-
-_Watch the demonstration video on YouTube_
+| [![Watch the demo](https://img.youtube.com/vi/hWS9AQ-bCCg/hqdefault.jpg)](https://youtu.be/hWS9AQ-bCCg) |
+|:--:|
+| _Watch the full demonstration video on YouTube (6 minutes) showcasing Vulnarena’s main features and gameplay_ |
 
 ---
 
