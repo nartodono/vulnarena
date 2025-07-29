@@ -66,7 +66,7 @@ PvP battles bring the excitement of real competition and learning at once.
 |:--:|:--:|
 | *Dashboard* | *Dynamic Lab Generator* |
 
-| ![Dynamic Lab Menu](docs/images/dynamic lab.png) | ![PvP Page](docs/images/pvp.png) |
+| ![Dynamic Lab Menu](docs/images/dynamicLab.png) | ![PvP Page](docs/images/pvp.png) |
 |:--:|:--:|
 | *Dynamic Lab Feature* | *PvP Home Page* |
 
