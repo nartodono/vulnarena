@@ -9,16 +9,18 @@
 
 ## Table of Contents
 
+- [Project Overview](#vulnerability-arena)
 - [Features](#features)
 - [Demo](#demo)
 - [Tech](#tech)
+- [Documentation Structure](#documentation-structure)
 - [Project Status](#project-status)
 - [License](#license)
 - [FAQ](#faq)
-- [Documentation Structure](#Documentation-Structure)
 - [Contact](#contact)
 
 ---
+## Vulnerability Arena
 
 **Vulnarena** is a prototype interactive website designed as an educational cybersecurity platform, originally developed as a final project (skripsi).
 
@@ -56,7 +58,6 @@ PvP battles bring the excitement of real competition and learning at once.
 
 - **Modern UI & UX:**  
   The platform includes a clean and functional user interface and user experience, designed for effective and comfortable learning.
-
 
 ---
 
@@ -100,6 +101,20 @@ The backend API uses three main Composer packages:
 
 ---
 
+## Documentation Structure
+
+> This repository is not plug & play. Each part must be set up individually as described in the respective README files.
+
+Each core module/service has its own README with specific setup and usage instructions:
+- [Backend/API Setup](./apps/web/backend/README.md)
+- [Frontend/Web Setup](./apps/web/frontend/README.md)
+- [Lab Environment](./apps/lab/README.md)
+- [Infrastructure/Deployment](./infrastructure/README.md)
+
+> Please refer to each module’s README before attempting to run or modify the code.
+
+---
+
 ## Project Status
 
 This repository is released as an **open-source reference only**.  
@@ -116,6 +131,8 @@ Feel free to fork, explore, and modify this code for your own learning or future
 ![MIT License](https://img.shields.io/badge/License-MIT-green)
 
 This project is licensed under the [MIT License](LICENSE).
+
+© 2025 Muhammad Luthfi Dwi Anggana, Anniki Reynara Iskandar, Ayubi Sholahudin.
 
 > **Notice:**
 > Vulnarena is not intended for large-scale production.  
@@ -138,7 +155,6 @@ It is a fully developed prototype, and setting it up requires significant custom
 We recommend exploring the codebase and reading the README.md files in each directory to understand the project structure.  
 You are encouraged to adapt the code as needed for your environment.
 
-
 ### Q: What are the minimum requirements?
 **A:**  
 There is no strict minimum requirement provided.
@@ -154,35 +170,18 @@ All other requirements are handled by the deployment manifests in the repository
 Exact resource needs may vary depending on your deployment setup.  
 You are expected to adjust and configure resources as necessary.
 
-
 ### Q: Can I use Vulnarena for my own project or in production?
 **A:**  
 You are welcome to fork and modify the code for learning or further development.  
 However, **Vulnarena is not intended for production use** and may lack certain security and scalability features.
-
 
 ### Q: I found a bug or severe vulnerability. Can I send a pull request to fix this issue?
 **A:**  
 Pull requests and external contributions will not be accepted, as this repository is provided for reference only.  
 You are welcome to keep your findings for yourself or share them with the community as you see fit.
 
-
-## Documentation Structure
-
-> This repository is not plug & play. Each part must be set up individually as described in the respective README files.
-
-Each core module/service has its own README with specific setup and usage instructions:
-- [Backend/API Setup](./apps/web/backend/README.md)
-- [Frontend/Web Setup](./apps/web/frontend/README.md)
-- [Lab Environment](./apps/lab/README.md)
-- [Infrastructure/Deployment](./infrastructure/README.md)
-
-> Please refer to each module’s README before attempting to run or modify the code.
-
 ---
 
 ## Contact
 
 Discord: **4.dmin**
-
----
