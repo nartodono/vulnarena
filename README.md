@@ -23,7 +23,7 @@
 ---
 ## Vulnerability Arena
 
-**Vulnarena** is a prototype interactive website designed as an educational cybersecurity platform, originally developed as a final project (skripsi).
+**Vulnarena** is a prototype interactive website designed as an educational cybersecurity platform. It was originally developed as an undergraduate final project (skripsi).
 
 Vulnarena is a uniquely complex open-source platform that brings together interactive cybersecurity learning, dynamic lab automation (with Kubernetes orchestration), and real-time PvP quiz—all in a single, modular system.  
 It is developed fully with native PHP (no frameworks), alongside HTML, CSS (Tailwind), and JavaScript.
