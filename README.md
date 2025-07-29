@@ -44,10 +44,15 @@ PvP battles bring the excitement of real competition and learning at once.
 - **Learning Materials & Post-Test:**  
   Access interactive cybersecurity content, then test your overall understanding with a comprehensive post-test covering all topics.
 
-  ![Learning Material](docs/images/learningMaterial.png)
+  ![Learning Material List](docs/images/learningMaterial.png)
+  ![Learning Material Example](docs/images/learningXss.png)
+  ![Learning Material Example](docs/images/postTest.png)
 
 - **Dynamic Vulnerable Labs:**  
   Practice hands-on in real, intentionally vulnerable lab environments for practical learning.
+
+  ![Dynamic Lab Generator](docs/images/dynamicLab.png)
+  ![Dynamic Lab Features](docs/images/dynamicLabFeature.png)
 
 - **PvP Quiz Mode:**  
   Compete live against other users in a cybersecurity quiz game inspired by Kahoot.
@@ -55,11 +60,20 @@ PvP battles bring the excitement of real competition and learning at once.
 - **PvP Match History & MMR:**  
   View your quiz battle history, including win/loss stats and MMR record.
 
+  ![PvP Quiz](docs/images/pvp1.png)
+  ![PvP Result](docs/images/pvp2.png)
+  ![PvP Summary](docs/images/pvp3.png)
+  ![PvP History](docs/images/pvphistory.png)
+
 - **User Account Management:**  
   Register, log in, edit your profile, change or recover your password—all essential features are included.
 
+  ![Account Management](docs/images/accountManagement.png)
+
 - **Modern UI & UX:**  
   The platform includes a clean and functional user interface and user experience, designed for effective and comfortable learning.
+
+  ![Dashboard(long version)](docs/images/homePage(long).png)
 
 ---
 
