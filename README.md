@@ -78,7 +78,7 @@ There are **no plans for further development or maintenance**.
 The code is provided as a learning resource and example implementation for anyone interested in cybersecurity education platforms.
 
 **Pull requests and external contributions will not be accepted.**  
-Feel free to fork, study, or adapt the code for your own non-commercial learning purposes.
+Feel free to fork, explore, and modify this code for your own learning or future projects.
 
 ---
 
@@ -105,6 +105,44 @@ MIT License
 Discord: **4.dmin**
 
 ---
+
+## FAQ
+
+### Q: Is there an installation or setup guide?
+**A:**  
+No, Vulnarena is not a plug-and-play template.  
+It is a fully developed prototype, and setting it up requires significant customization to match your own infrastructure (such as Minikube/Kubernetes cluster, domains, credentials, etc).  
+We recommend exploring the codebase and reading the README.md files in each directory to understand the project structure.  
+You are encouraged to adapt the code as needed for your environment.
+
+
+### Q: What are the minimum requirements?
+**A:**  
+There is no strict minimum requirement provided.
+
+Vulnarena uses containerized deployments (via Kubernetes/Minikube), so you do **not** need to install specific versions of PHP, MySQL, or other dependencies on your host machine.  
+You only need a working Kubernetes (Minikube) or similar container orchestration environment, with enough resources to run multiple pods and services.
+
+Generally, you should have:
+- Basic knowledge of Docker, orchestration, and Kubernetes
+- Sufficient compute resources to deploy multiple containers/pods
+
+All other requirements are handled by the deployment manifests in the repository.  
+Exact resource needs may vary depending on your deployment setup.  
+You are expected to adjust and configure resources as necessary.
+
+
+### Q: Can I use Vulnarena for my own project or in production?
+**A:**  
+You are welcome to fork and modify the code for learning or further development.  
+However, **Vulnarena is not intended for production use** and may lack certain security and scalability features.
+
+
+### Q: I found a bug or severe vulnerability. Can I send a pull request to fix this issue?
+**A:**  
+Pull requests and external contributions will not be accepted, as this repository is provided for reference only.  
+You are welcome to keep your findings for yourself or share them with the community as you see fit.
+
 
 ## Documentation Structure
 
