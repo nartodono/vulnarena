@@ -85,9 +85,14 @@ Check out some examples of Vulnarena’s features and interface:
 
 Want to see Vulnarena in action? Check out our 6-minute demonstration video showcasing all the platform’s key features.
 
+> **Note:**  
+> Please note that the domain shown in the video is currently inaccessible since the VPS service has been stopped. However, we still retain ownership of the domain.
+
+
 | [![Watch the demo](https://img.youtube.com/vi/hWS9AQ-bCCg/hqdefault.jpg)](https://youtu.be/hWS9AQ-bCCg) |
 |:--:|
 | _Watch the full demo video on YouTube (6 minutes)_ |
+
 
 ---
 
