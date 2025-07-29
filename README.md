@@ -45,52 +45,52 @@ PvP battles bring the excitement of real competition and learning at once.
   Access interactive cybersecurity content, then test your overall understanding with a comprehensive post-test covering all topics.
 
   ![Learning Material List](docs/images/learningMaterial.png)
-  *Learning Material List
+  *Learning Material List*
   
   ![Learning Material Example](docs/images/learningXss.png)
-  *Example of Learning Material
+  *Example of Learning Material*
   
   ![Post-Test](docs/images/postTest.png)
-  *Post-Test Feature
+  *Post-Test Feature*
 
 - **Dynamic Vulnerable Labs:**  
   Practice hands-on in real, intentionally vulnerable lab environments for practical learning.
 
   ![Dynamic Lab Generator](docs/images/dynamicLab.png)
-  *Lab Generator Page
+  *Lab Generator Page*
   
   ![Dynamic Lab Features](docs/images/dynamicLabFeature.png)
-  *Dynamic Lab Menu
+  *Dynamic Lab Menu*
 
 - **PvP Quiz Mode:**  
   Compete live against other users in a cybersecurity quiz game inspired by Kahoot.
   ![PvP Quiz](docs/images/pvp1.png)
-  *PvP Quiz
+  *PvP Quiz*
   
   ![PvP Result](docs/images/pvp2.png)
-  *PvP Result
+  *PvP Result*
   
   ![PvP Summary](docs/images/pvp3.png)
-  *PvP Summary
+  *PvP Summary*
 
 
 - **PvP Match History & MMR:**  
   View your quiz battle history, including win/loss stats and MMR record.
 
   ![PvP History](docs/images/pvphistory.png)
-  *PvP Histor Page
+  *PvP Histor Page*
 
 - **User Account Management:**  
   Register, log in, edit your profile, change or recover your password—all essential features are included.
 
   ![Account Management](docs/images/accountManagement.png)
-  *User Accoung Management Page
+  *User Accoung Management Page*
 
 - **Modern UI & UX:**  
   The platform includes a clean and functional user interface and user experience, designed for effective and comfortable learning.
 
   ![Dashboard(long version)](docs/images/homePage(long).png)
-  *Dashboard Page (Long Version)
+  *Dashboard Page (Long Version)*
 
 > **Note:**  
 > The images above are a bit blurry due to limited source quality.  
