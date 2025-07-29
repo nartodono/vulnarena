@@ -44,7 +44,6 @@ PvP battles bring the excitement of real competition and learning at once.
 - **Learning Materials & Post-Test:**  
   Access interactive cybersecurity content, then test your overall understanding with a comprehensive post-test covering all topics.
 
-
   ![Learning Material List](docs/images/learningMaterial.png)
   > *Learning Material List*
   ---
@@ -55,7 +54,7 @@ PvP battles bring the excitement of real competition and learning at once.
   
   ![Post-Test](docs/images/postTest.png)
   > *Post-Test Feature*
-  ---
+---
 
 
 - **Dynamic Vulnerable Labs:**  
@@ -67,7 +66,7 @@ PvP battles bring the excitement of real competition and learning at once.
   
   ![Dynamic Lab Features](docs/images/dynamicLabFeature.png)
   > *Dynamic Lab Menu*
-  ---
+---
 
 
 - **PvP Quiz Mode:**  
@@ -83,7 +82,7 @@ PvP battles bring the excitement of real competition and learning at once.
   
   ![PvP Summary](docs/images/pvp3.png)<br>
   > *PvP Summary*
-  ---
+---
 
 
 - **PvP Match History & MMR:**  
@@ -91,7 +90,7 @@ PvP battles bring the excitement of real competition and learning at once.
 
   ![PvP History](docs/images/pvphistory.png)
   > *PvP History Page*
-  ---
+---
 
 
 - **User Account Management:**  
@@ -99,7 +98,7 @@ PvP battles bring the excitement of real competition and learning at once.
 
   ![Account Management](docs/images/accountManagement.png)
   > *User Accoung Management Page*
-  ---
+---
 
 
 - **Modern UI & UX:**  
@@ -107,7 +106,7 @@ PvP battles bring the excitement of real competition and learning at once.
 
   ![Dashboard(long version)](docs/images/homePage(long).png)
   > *Dashboard Page (Long Version)*
-  ---
+---
   
 
 > **Note:**  
