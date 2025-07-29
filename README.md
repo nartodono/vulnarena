@@ -63,13 +63,13 @@ PvP battles bring the excitement of real competition and learning at once.
 
 ---
 
-##Showcases
+## Showcases
 
-These are some examples of the features and UI of Vulnarena:
+Check out some examples of Vulnarena’s features and interface:
 
 | ![Dashboard](docs/images/dashboard.png) | ![Lab Generator](docs/images/lab.png) |
 |:--:|:--:|
-| *Dashboard* | *Dynamic Lab Generator* |
+| *Landing Page* | *Dynamic Lab Generator* |
 
 | ![Dynamic Lab Menu](docs/images/dynamicLab.png) | ![PvP Page](docs/images/pvp.png) |
 |:--:|:--:|
