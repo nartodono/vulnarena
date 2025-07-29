@@ -1,5 +1,18 @@
 # Vulnarena
 
+![Made with HTML](https://img.shields.io/badge/HTML-HTML5-orange)
+![Made with CSS](https://img.shields.io/badge/CSS-Tailwind-2bbc8a)
+![Made with JS](https://img.shields.io/badge/JavaScript-ES6-yellow)
+![Made with PHP](https://img.shields.io/badge/PHP-Native-blue)
+![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1)
+![Composer](https://img.shields.io/badge/Composer-PHP-885630)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestration-326ce5)
+![Minikube](https://img.shields.io/badge/Minikube-DevCluster-23aae4)
+![Docker](https://img.shields.io/badge/Docker-Container-2496ed)
+![WebSocket](https://img.shields.io/badge/WebSocket-RealTime-ff9800)
+![MIT License](https://img.shields.io/badge/License-MIT-green)
+
+
 **Vulnarena** is a prototype interactive website designed as an educational cybersecurity platform, originally developed as a final project (skripsi).
 
 Vulnarena is a uniquely complex open-source platform that brings together interactive cybersecurity learning, dynamic lab automation (with Kubernetes orchestration), and real-time PvP quiz—all in a single, modular system.  
