@@ -11,6 +11,19 @@
 ![MIT License](https://img.shields.io/badge/License-MIT-green)
 ![Academic Prototype](https://img.shields.io/badge/Academic-Prototype-FFB300)
 
+## Table of Contents
+
+- [Features](#features)
+- [Demo](#demo)
+- [Tech](#tech)
+- [Project Status](#project-status)
+- [License](#license)
+- [FAQ](#faq)
+- [Document Structure](#Documentation-Structure)
+- [Contact](#contact)
+
+---
+
 **Vulnarena** is a prototype interactive website designed as an educational cybersecurity platform, originally developed as a final project (skripsi).
 
 Vulnarena is a uniquely complex open-source platform that brings together interactive cybersecurity learning, dynamic lab automation (with Kubernetes orchestration), and real-time PvP quiz—all in a single, modular system.  
@@ -111,12 +124,6 @@ MIT License
 
 ---
 
-## Contact
-
-Discord: **4.dmin**
-
----
-
 ## FAQ
 
 ### Q: Is there an installation or setup guide?
@@ -166,3 +173,11 @@ Each core module/service has its own README with specific setup and usage instru
 - [Infrastructure/Deployment](./infrastructure/README.md)
 
 > Please refer to each module’s README before attempting to run or modify the code.
+
+---
+
+## Contact
+
+Discord: **4.dmin**
+
+---
