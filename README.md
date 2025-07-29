@@ -1,15 +1,11 @@
 # Vulnarena
 
-![HTML](https://img.shields.io/badge/HTML-Native-orange)
-![CSS](https://img.shields.io/badge/CSS-Tailwind-2bbc8a)
-![JavaScript](https://img.shields.io/badge/JavaScript-Native-yellow)
-![PHP](https://img.shields.io/badge/PHP-Native-blue)
-![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1)
-![Docker](https://img.shields.io/badge/Docker-Container-2496ed)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestration-326ce5)
-![Composer](https://img.shields.io/badge/Composer-PHP-885630)
-![MIT License](https://img.shields.io/badge/License-MIT-green)
 ![Academic Prototype](https://img.shields.io/badge/Academic-Prototype-FFB300)
+![Cybersecurity Education](https://img.shields.io/badge/Cybersecurity-Education-blueviolet)
+![Web-based](https://img.shields.io/badge/Web--based-Platform-lightgrey)
+![PvP Quiz](https://img.shields.io/badge/PvP-Quiz-f44336)
+![Dynamic Lab](https://img.shields.io/badge/Dynamic-Lab-2196f3)
+![Hands-on Learning](https://img.shields.io/badge/Hands--on-Learning-43a047)
 
 ## Table of Contents
 
@@ -19,7 +15,7 @@
 - [Project Status](#project-status)
 - [License](#license)
 - [FAQ](#faq)
-- [Document Structure](#Documentation-Structure)
+- [Documentation Structure](#Documentation-Structure)
 - [Contact](#contact)
 
 ---
@@ -74,6 +70,15 @@ _Watch the demonstration video on YouTube_
 
 ## Tech
 
+![HTML](https://img.shields.io/badge/HTML-Native-orange)
+![CSS](https://img.shields.io/badge/CSS-Tailwind-2bbc8a)
+![JavaScript](https://img.shields.io/badge/JavaScript-Native-yellow)
+![PHP](https://img.shields.io/badge/PHP-Native-blue)
+![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1)
+![Docker](https://img.shields.io/badge/Docker-Container-2496ed)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestration-326ce5)
+![Composer](https://img.shields.io/badge/Composer-PHP-885630)
+
 This website is built **fully with native PHP (no frameworks)**, HTML, CSS (Tailwind), and JavaScript, all running inside a Minikube-based infrastructure.
 
 The platform follows a **decoupled architecture**:  
@@ -108,9 +113,9 @@ Feel free to fork, explore, and modify this code for your own learning or future
 
 ## License
 
-MIT License
+![MIT License](https://img.shields.io/badge/License-MIT-green)
 
----
+This project is licensed under the [MIT License](LICENSE).
 
 > **Notice:**
 > Vulnarena is not intended for large-scale production.  
