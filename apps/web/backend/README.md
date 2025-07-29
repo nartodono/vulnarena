@@ -39,3 +39,5 @@ Feel free to review or use this backend/API code as a reference for learning or 
 > **Note:**  
 > While this server implements several security mechanisms, it is still a prototype and **not fully secure for production use**.  
 > Some recommended best practices—such as rate limiting and additional protections—are **not yet implemented**.
+>
+> Please note that the PvP feature, which uses Ratchet for real-time experience, works well as long as users follow the intended flow. However, any unintended actions during PvP may cause bugs that require resetting the WebSocket memory and updating certain information in the database.
