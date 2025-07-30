@@ -27,7 +27,7 @@
 
 Vulnarena is a uniquely complex open-source platform that brings together interactive cybersecurity learning, dynamic lab automation (with Kubernetes orchestration), and real-time PvP quiz—all in a single, modular system.  
 It is developed fully with native PHP (no frameworks), alongside HTML, CSS (Tailwind), and JavaScript.
-Such an integrated feature set is rarely found in academic or open-source projects, making Vulnarena a distinctive and valuable resource for both learners and developers.
+And yes, it’s truly 100% native, no frameworks at all. This makes Vulnarena incredibly easy for any developer to understand, customize, and migrate to their own environment.
 
 Vulnarena is the only open-source platform (so far) that combines:
 - **Interactive learning modules and post-test**
